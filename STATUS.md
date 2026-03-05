@@ -40,3 +40,18 @@ Content is placeholder (based on cohomegrant.com structure) — needs client rep
 
 - Blog: client wants bilingual blog posts (EN + ES). CMS approach TBD pending client discussion.
 - Lead routing: client wants flexibility to route leads to multiple lenders in future — do not hardwire to Pivot.
+
+## Recurring Services Opportunity
+
+The website is a one-time build, but the goal is to expand into ongoing content services:
+
+| Service | Tool Already Built |
+|---|---|
+| Bilingual blog posts | Write once, publish EN + ES |
+| Podcast episodes | VoxCrea / podcast-studio |
+| Blog → Podcast | podcast-automation pipeline (automated) |
+| YouTube Shorts / video | Video_Renderer (MP4 + subtitles) |
+| Instagram / TikTok | Short-form cuts from same video pipeline |
+
+Vision: **one piece of content → multiple formats**, delivered as a recurring monthly service.
+This client could be the first proof-of-concept for a repeatable content agency offering built on the VoxCrea toolset.
