@@ -4,9 +4,12 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/context/language-context"
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { t, lang, toggleLang } = useLanguage()
+  const nav = t.nav
 
   return (
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
@@ -24,29 +27,36 @@ export function SiteHeader() {
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
             <Link href="#home" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              Home
+              {nav.home}
             </Link>
             <Link href="#about" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              About
+              {nav.about}
             </Link>
             <Link href="#program" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              The Grant
+              {nav.theGrant}
             </Link>
             <Link href="#testimonials" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              Testimonials
+              {nav.testimonials}
             </Link>
             <Link href="#contact" className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-              Contact
+              {nav.contact}
             </Link>
           </nav>
 
           <div className="hidden items-center gap-4 md:flex">
+            <button
+              onClick={toggleLang}
+              className="rounded-md border border-border px-2.5 py-1 text-xs font-semibold text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+              aria-label="Switch language"
+            >
+              {lang === "en" ? "ES" : "EN"}
+            </button>
             <a href="tel:720-735-2832" className="flex items-center gap-1.5 text-sm font-medium text-primary">
               <Phone className="h-4 w-4" />
               <span>720-735-2832</span>
             </a>
             <Button asChild>
-              <Link href="#contact">Request Info</Link>
+              <Link href="#contact">{nav.requestInfo}</Link>
             </Button>
           </div>
 
@@ -66,27 +76,33 @@ export function SiteHeader() {
         <div className="border-t border-border bg-card md:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile navigation">
             <Link href="#home" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary" onClick={() => setMobileMenuOpen(false)}>
-              Home
+              {nav.home}
             </Link>
             <Link href="#about" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary" onClick={() => setMobileMenuOpen(false)}>
-              About
+              {nav.about}
             </Link>
             <Link href="#program" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary" onClick={() => setMobileMenuOpen(false)}>
-              The Grant
+              {nav.theGrant}
             </Link>
             <Link href="#testimonials" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary" onClick={() => setMobileMenuOpen(false)}>
-              Testimonials
+              {nav.testimonials}
             </Link>
             <Link href="#contact" className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary" onClick={() => setMobileMenuOpen(false)}>
-              Contact
+              {nav.contact}
             </Link>
             <div className="mt-2 flex flex-col gap-2 border-t border-border pt-3">
+              <button
+                onClick={toggleLang}
+                className="w-fit rounded-md border border-border px-2.5 py-1 text-xs font-semibold text-muted-foreground transition-colors hover:border-primary hover:text-primary ml-3"
+              >
+                {lang === "en" ? "Español" : "English"}
+              </button>
               <a href="tel:720-735-2832" className="flex items-center gap-1.5 px-3 text-sm font-medium text-primary">
                 <Phone className="h-4 w-4" />
                 <span>720-735-2832</span>
               </a>
               <Button asChild className="w-full">
-                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>Request Info</Link>
+                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>{nav.requestInfo}</Link>
               </Button>
             </div>
           </nav>

@@ -1,7 +1,14 @@
+"use client"
+
 import Link from "next/link"
 import { Phone, Mail } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 export function SiteFooter() {
+  const { t } = useLanguage()
+  const nav = t.nav
+  const f = t.footer
+
   return (
     <footer className="border-t border-border bg-foreground">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -17,23 +24,23 @@ export function SiteFooter() {
               </div>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-background/60">
-              Helping Colorado residents achieve their dream of homeownership through our grant assistance program.
+              {f.description}
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-background">Quick Links</h3>
+            <h3 className="font-semibold text-background">{f.quickLinks}</h3>
             <nav className="mt-4 flex flex-col gap-2" aria-label="Footer navigation">
-              <Link href="#home" className="text-sm text-background/60 hover:text-primary">Home</Link>
-              <Link href="#about" className="text-sm text-background/60 hover:text-primary">About</Link>
-              <Link href="#program" className="text-sm text-background/60 hover:text-primary">The Grant</Link>
-              <Link href="#testimonials" className="text-sm text-background/60 hover:text-primary">Testimonials</Link>
-              <Link href="#contact" className="text-sm text-background/60 hover:text-primary">Contact</Link>
+              <Link href="#home" className="text-sm text-background/60 hover:text-primary">{nav.home}</Link>
+              <Link href="#about" className="text-sm text-background/60 hover:text-primary">{nav.about}</Link>
+              <Link href="#program" className="text-sm text-background/60 hover:text-primary">{nav.theGrant}</Link>
+              <Link href="#testimonials" className="text-sm text-background/60 hover:text-primary">{nav.testimonials}</Link>
+              <Link href="#contact" className="text-sm text-background/60 hover:text-primary">{nav.contact}</Link>
             </nav>
           </div>
 
           <div>
-            <h3 className="font-semibold text-background">Contact Info</h3>
+            <h3 className="font-semibold text-background">{f.contactInfo}</h3>
             <div className="mt-4 flex flex-col gap-3">
               <a href="tel:720-735-2832" className="flex items-center gap-2 text-sm text-background/60 hover:text-primary">
                 <Phone className="h-4 w-4" />
@@ -53,7 +60,7 @@ export function SiteFooter() {
 
         <div className="mt-10 border-t border-background/10 pt-6 text-center">
           <p className="text-sm text-background/40">
-            &copy; {new Date().getFullYear()} Colorado Home Grant. All rights reserved.
+            &copy; {new Date().getFullYear()} {f.copyright}
           </p>
         </div>
       </div>

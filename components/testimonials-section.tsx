@@ -1,42 +1,27 @@
-import { Quote } from "lucide-react"
+"use client"
 
-const testimonials = [
-  {
-    quote: "Ryan made everything quick and easy. He answered questions we had and was available when we needed it as well. Highly recommend!",
-    author: "Rebecca G.H.",
-    location: "Aurora",
-    heading: "Highly recommend!",
-  },
-  {
-    quote: "Professional, available, and informative with any questions we had throughout the process.",
-    author: "Isaac C.",
-    location: "Aurora",
-    heading: "Professional and available.",
-  },
-  {
-    quote: "Ryan was very sweet, and I really felt like I could trust him. I would recommend him to anyone looking to buy a home!",
-    author: "Alyssa D.",
-    location: "Lakewood",
-    heading: "Ryan was very sweet.",
-  },
-]
+import { Quote } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 export function TestimonialsSection() {
+  const { t } = useLanguage()
+  const s = t.testimonials
+
   return (
     <section id="testimonials" className="bg-card py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">Testimonials</span>
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary">{s.eyebrow}</span>
           <h2 className="mt-3 text-balance font-serif text-3xl font-bold text-foreground sm:text-4xl">
-            See What Our Happy Customers Say
+            {s.title}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground leading-relaxed">
-            We take pride in helping families across Colorado achieve their dream of homeownership.
+            {s.subtitle}
           </p>
         </div>
 
         <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {testimonials.map((testimonial) => (
+          {s.items.map((testimonial) => (
             <article
               key={testimonial.author}
               className="flex flex-col rounded-xl border border-border bg-background p-8 shadow-sm transition-shadow hover:shadow-md"
