@@ -10,12 +10,41 @@ import { useLanguage } from "@/context/language-context"
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
   const { t } = useLanguage()
   const c = t.contact
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    setSubmitting(true)
+    setError(false)
+
+    const form = e.currentTarget
+    const data = {
+      firstName: (form.elements.namedItem("firstName") as HTMLInputElement).value,
+      lastName: (form.elements.namedItem("lastName") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    }
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -38,9 +67,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">{c.phoneLabel}</p>
-                  <a href="tel:720-735-2832" className="text-sm text-muted-foreground hover:text-primary">720-735-2832</a>
-                  <span className="mx-2 text-muted-foreground/40">|</span>
-                  <a href="tel:720-735-2890" className="text-sm text-muted-foreground hover:text-primary">720-735-2890</a>
+                  <p className="text-sm text-muted-foreground">[Phone TBD]</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -49,7 +76,9 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">{c.emailLabel}</p>
-                  <a href="mailto:info@cohomegrant.com" className="text-sm text-muted-foreground hover:text-primary">info@cohomegrant.com</a>
+                  <a href="mailto:info@cofirsttimebuyergrants.com" className="text-sm text-muted-foreground hover:text-primary">
+                    info@cofirsttimebuyergrants.com
+                  </a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -74,7 +103,7 @@ export function ContactSection() {
                 <p className="mt-3 max-w-sm text-muted-foreground leading-relaxed">
                   {c.thankYouMessage}
                 </p>
-                <Button className="mt-6" onClick={() => setSubmitted(false)}>
+                <Button className="mt-6" onClick={() => { setSubmitted(false); setError(false) }}>
                   {c.sendAnother}
                 </Button>
               </div>
@@ -85,27 +114,32 @@ export function ContactSection() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="firstName">{c.firstName}</Label>
-                    <Input id="firstName" placeholder={c.firstNamePlaceholder} required />
+                    <Input id="firstName" name="firstName" placeholder={c.firstNamePlaceholder} required />
                   </div>
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="lastName">{c.lastName}</Label>
-                    <Input id="lastName" placeholder={c.lastNamePlaceholder} required />
+                    <Input id="lastName" name="lastName" placeholder={c.lastNamePlaceholder} required />
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="email">{c.email}</Label>
-                  <Input id="email" type="email" placeholder={c.emailPlaceholder} required />
+                  <Input id="email" name="email" type="email" placeholder={c.emailPlaceholder} required />
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="phone">{c.phone}</Label>
-                  <Input id="phone" type="tel" placeholder={c.phonePlaceholder} />
+                  <Input id="phone" name="phone" type="tel" placeholder={c.phonePlaceholder} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="message">{c.message}</Label>
-                  <Textarea id="message" placeholder={c.messagePlaceholder} rows={4} />
+                  <Textarea id="message" name="message" placeholder={c.messagePlaceholder} rows={4} />
                 </div>
-                <Button type="submit" size="lg" className="w-full">
-                  {c.submit}
+                {error && (
+                  <p className="text-sm text-destructive">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
+                <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                  {submitting ? "Sending..." : c.submit}
                 </Button>
               </form>
             )}
