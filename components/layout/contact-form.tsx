@@ -1,9 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { FormSection, FormField, inputClass, selectClass, textareaClass } from '@/components/sections/form-section'
 import type { Dictionary } from '@/lib/translations'
+
+function inferSourceType(pathname: string): string {
+  const parts = pathname.split('/').filter(Boolean)
+  if (parts.length === 1) return 'homepage'
+  const page = parts[1]
+  if (page === 'counties' && parts.length >= 3) return 'county'
+  if (page === 'counties') return 'counties'
+  if (page === 'learn' && parts.length >= 3) return 'learn'
+  if (page === 'learn') return 'learn-index'
+  if (page === 'faq') return 'faq'
+  if (page === 'contact') return 'contact'
+  return page ?? 'unknown'
+}
 
 const CO_COUNTIES = [
   'Adams', 'Arapahoe', 'Boulder', 'Broomfield', 'Chaffee',
@@ -25,17 +39,24 @@ export function ContactForm({ form, showMessage = true, defaultCounty }: Props) 
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const pathname = usePathname()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
     setError(false)
     const data = Object.fromEntries(new FormData(e.currentTarget))
+    const enriched = {
+      ...data,
+      language: pathname.split('/')[1] ?? 'en',
+      sourcePath: pathname,
+      sourceType: inferSourceType(pathname),
+    }
     try {
       const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(enriched),
       })
       if (!res.ok) throw new Error('Submission failed')
       setSubmitted(true)

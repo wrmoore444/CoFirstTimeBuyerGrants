@@ -80,6 +80,8 @@ export function SiteFooter({ dict, lang }: Props) {
               <li><span className="text-background/60">{f.nmls}</span></li>
               <li><span className="text-background/60">{f.equalHousing}</span></li>
               <li><span className="text-background/60">{f.licensed}</span></li>
+              <li><span className="text-background/40">{f.privacyPolicy}</span></li>
+              <li><span className="text-background/40">{f.terms}</span></li>
             </ul>
           </div>
         </div>

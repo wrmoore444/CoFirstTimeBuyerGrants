@@ -249,7 +249,7 @@ export const es: Dictionary = {
       nmls: 'NMLS# [TBD]',
       equalHousing: 'Igualdad de Oportunidades de Vivienda',
       licensed: 'Con Licencia en el Estado de Colorado',
-      disclosure: 'CoFirstTimeBuyerGrants es un servicio de corretaje hipotecario. Todos los programas de subvenci\u00f3n est\u00e1n sujetos a disponibilidad, elegibilidad del prestatario y aprobaci\u00f3n del prestamista.',
+      disclosure: 'CoFirstTimeBuyerGrants es un servicio de corretaje hipotecario. NMLS# [TBD]. Con licencia en el Estado de Colorado. Esto no es un compromiso de préstamo. Todos los préstamos están sujetos a aprobación de crédito, disponibilidad del programa y elegibilidad del prestatario. Los programas de asistencia para compradores están sujetos a cambios sin previo aviso. Igualdad de Oportunidades de Vivienda.',
     },
     cta: {
       title: '\u00bfListo Para Dar El Primer Paso?',
@@ -334,7 +334,7 @@ export const es: Dictionary = {
     nmls: 'NMLS# [TBD]',
     licensed: 'Con Licencia en Colorado',
     copyright: 'CoFirstTimeBuyerGrants. Todos los derechos reservados.',
-    disclosure: 'Esto no es un compromiso de pr\u00e9stamo. Todos los pr\u00e9stamos sujetos a aprobaci\u00f3n de cr\u00e9dito. Disponibilidad del programa sujeta a cambios.',
+    disclosure: 'CoFirstTimeBuyerGrants es un servicio de corretaje hipotecario. NMLS# [TBD]. Con licencia en el Estado de Colorado. Esto no es un compromiso de préstamo. Todos los préstamos están sujetos a aprobación de crédito, disponibilidad del programa y elegibilidad del prestatario. Los programas de asistencia para compradores están sujetos a cambios sin previo aviso. Igualdad de Oportunidades de Vivienda.',
   },
   countiesOverview: {
     heroBadge: 'Área de Servicio',

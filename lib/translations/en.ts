@@ -335,7 +335,7 @@ export const en = {
     nmls: 'NMLS# [TBD]',
     licensed: 'Licensed in Colorado',
     copyright: 'CoFirstTimeBuyerGrants. All rights reserved.',
-    disclosure: 'This is not a commitment to lend. All loans subject to credit approval. Program availability subject to change.',
+    disclosure: 'CoFirstTimeBuyerGrants is a mortgage brokerage service. NMLS# [TBD]. Licensed in the State of Colorado. This is not a commitment to lend. All loans are subject to credit approval, program availability, and borrower eligibility. Homebuyer assistance programs are subject to change without notice. Equal Housing Opportunity. Privacy Policy and Terms of Service available upon request.',
   },
   countiesOverview: {
     heroBadge: 'Service Area',
