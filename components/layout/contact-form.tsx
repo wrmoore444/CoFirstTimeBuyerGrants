@@ -23,20 +23,23 @@ interface Props {
 export function ContactForm({ form, showMessage = true }: Props) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
+    setError(false)
     const data = Object.fromEntries(new FormData(e.currentTarget))
     try {
-      await fetch('/api/leads', {
+      const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
+      if (!res.ok) throw new Error('Submission failed')
       setSubmitted(true)
     } catch {
-      // silent fail for now
+      setError(true)
     } finally {
       setLoading(false)
     }
@@ -97,7 +100,7 @@ export function ContactForm({ form, showMessage = true }: Props) {
           />
         </FormField>
         <FormField label={form.county}>
-          <select name="county" className={selectClass} defaultValue="">
+          <select name="county" className={selectClass} defaultValue="" required>
             <option value="" disabled>{form.countyPlaceholder}</option>
             {CO_COUNTIES.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -113,6 +116,11 @@ export function ContactForm({ form, showMessage = true }: Props) {
               className={textareaClass}
             />
           </FormField>
+        )}
+        {error && (
+          <p className="text-sm text-destructive text-center">
+            Something went wrong. Please try again or call us directly.
+          </p>
         )}
         <Button type="submit" className="w-full" disabled={loading}>
           {loading ? '...' : form.submit}
