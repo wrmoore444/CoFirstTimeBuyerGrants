@@ -261,24 +261,22 @@ export const en = {
   faq: {
     hero: {
       badge: 'FAQ',
-      title: 'Frequently Asked Questions',
-      subtitle: 'Quick answers to the questions we hear most.',
+      title: 'Frequently Asked Questions About Colorado Homebuyer Assistance',
+      subtitle: 'Answers to common questions from first-time buyers exploring homeownership and assistance programs in Colorado.',
     },
-    items: [
-      { question: 'Do I have to repay the grant money?', answer: 'No. Grant funds do not need to be repaid as long as you meet program requirements and remain in the home for the required period.' },
-      { question: 'What is the maximum grant amount?', answer: 'Up to $25,000, depending on the program and your eligibility.' },
-      { question: 'Do I need to be a first-time buyer?', answer: "Not necessarily. If you haven\u2019t owned a home in the past 3 years, you may qualify under most programs." },
-      { question: 'Is there a hard credit pull?', answer: 'No credit pull is required to check your eligibility or speak with our team.' },
-      { question: 'How long does the process take?', answer: 'Timeline varies, but most buyers close within 30\u201360 days of starting the process with us.' },
-      { question: 'Is this service free?', answer: "Yes. Our team is paid at closing by the lender. There is no cost to you, ever." },
-      { question: 'Do you serve Spanish-speaking buyers?', answer: 'Yes. Our team provides full service in both English and Spanish.' },
-      { question: 'What counties do you serve?', answer: 'We serve buyers in 30+ Colorado counties. See our Counties page for the full list.' },
-    ],
-    cta: {
-      title: 'Still Have Questions?',
-      subtitle: "We\u2019re happy to help. Reach out and we\u2019ll get back to you quickly.",
-      primary: 'Contact Us',
-    },
+    listEyebrow: 'Common Questions',
+    listTitle: 'Your Questions, Answered',
+    educationalEyebrow: 'Good to Know',
+    educationalTitle: 'Programs Vary — A Professional Can Help',
+    educationalBody:
+      'Homebuyer assistance programs differ by county, lender, and program type. Eligibility depends on several factors including income, credit score, purchase price, and location. The most reliable way to understand which programs may apply to your situation is to speak with a licensed Colorado mortgage professional.',
+    ctaTitle: 'See If You May Qualify for Homebuyer Assistance',
+    ctaSubtitle: 'Speak with a Colorado-licensed mortgage professional at no cost, no obligation.',
+    ctaPrimary: 'Check Your Eligibility',
+    formEyebrow: 'Get Started',
+    formTitle: 'Speak With a Colorado Mortgage Professional',
+    formSubtitle: 'Complete the form and a Colorado-licensed mortgage professional will follow up to discuss your options.',
+    formReassurance: 'There is no cost to explore your eligibility, and speaking with a mortgage professional does not obligate you to apply for a loan.',
   },
   contact: {
     hero: {

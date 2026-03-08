@@ -260,24 +260,22 @@ export const es: Dictionary = {
   faq: {
     hero: {
       badge: 'Preguntas Frecuentes',
-      title: 'Preguntas Frecuentes',
-      subtitle: 'Respuestas r\u00e1pidas a las preguntas que m\u00e1s escuchamos.',
+      title: 'Preguntas Frecuentes Sobre Asistencia Para Compradores de Casa en Colorado',
+      subtitle: 'Respuestas a las preguntas más comunes de los compradores que exploran la compra de vivienda y los programas de asistencia en Colorado.',
     },
-    items: [
-      { question: '\u00bfTengo que devolver el dinero de la subvenci\u00f3n?', answer: 'No. Los fondos de la subvenci\u00f3n no necesitan ser devueltos siempre que cumplas los requisitos del programa.' },
-      { question: '\u00bfCu\u00e1l es el monto m\u00e1ximo de la subvenci\u00f3n?', answer: 'Hasta $25,000, dependiendo del programa y tu elegibilidad.' },
-      { question: '\u00bfNecesito ser comprador por primera vez?', answer: 'No necesariamente. Si no has tenido casa en los \u00faltimos 3 a\u00f1os, puedes calificar bajo la mayor\u00eda de los programas.' },
-      { question: '\u00bfHay una consulta de cr\u00e9dito dif\u00edcil?', answer: 'No se requiere consulta de cr\u00e9dito para verificar tu elegibilidad o hablar con nuestro equipo.' },
-      { question: '\u00bfCu\u00e1nto tiempo tarda el proceso?', answer: 'El tiempo var\u00eda, pero la mayor\u00eda de los compradores cierran dentro de 30\u201360 d\u00edas de comenzar el proceso.' },
-      { question: '\u00bfEste servicio es gratuito?', answer: 'S\u00ed. Nuestro equipo recibe pago al cierre del prestamista. No hay costo para ti, nunca.' },
-      { question: '\u00bfAtiendes a compradores de habla hispana?', answer: 'S\u00ed. Nuestro equipo ofrece servicio completo en ingl\u00e9s y espa\u00f1ol.' },
-      { question: '\u00bfQu\u00e9 condados atienden?', answer: 'Atendemos compradores en m\u00e1s de 30 condados de Colorado. Consulta nuestra p\u00e1gina de Condados.' },
-    ],
-    cta: {
-      title: '\u00bfTodav\u00eda Tienes Preguntas?',
-      subtitle: 'Con gusto te ayudamos. Comun\u00edcate y te responderemos pronto.',
-      primary: 'Cont\u00e1ctenos',
-    },
+    listEyebrow: 'Preguntas Comunes',
+    listTitle: 'Tus Preguntas, Respondidas',
+    educationalEyebrow: 'Importante Saber',
+    educationalTitle: 'Los Programas Varían — Un Profesional Puede Ayudar',
+    educationalBody:
+      'Los programas de asistencia para compradores de casa varían según el condado, el prestamista y el tipo de programa. La elegibilidad depende de varios factores, incluidos ingresos, puntaje de crédito, precio de compra y ubicación. La manera más confiable de entender qué programas pueden aplicar a tu situación es hablar con un profesional hipotecario con licencia en Colorado.',
+    ctaTitle: 'Descubre Si Puedes Calificar Para Asistencia',
+    ctaSubtitle: 'Habla con un profesional hipotecario con licencia en Colorado sin costo alguno, sin compromiso.',
+    ctaPrimary: 'Verificar Mi Elegibilidad',
+    formEyebrow: 'Comienza Ahora',
+    formTitle: 'Habla Con un Profesional Hipotecario de Colorado',
+    formSubtitle: 'Completa el formulario y un profesional hipotecario con licencia en Colorado se comunicará contigo para hablar sobre tus opciones.',
+    formReassurance: 'No hay costo para explorar tu elegibilidad, y hablar con un profesional hipotecario no te obliga a solicitar un préstamo.',
   },
   contact: {
     hero: {
