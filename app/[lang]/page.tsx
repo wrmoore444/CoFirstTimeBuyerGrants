@@ -176,21 +176,21 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       </ContentSection>
 
       {/* 6. TESTIMONIALS */}
-      <ContentSection background="white">
+      <ContentSection background="dark">
         <div className="text-center mb-10">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
             {h.testimonials.eyebrow}
           </span>
-          <h2 className="mt-3 font-serif text-3xl font-bold text-foreground sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-bold text-background sm:text-4xl">
             {h.testimonials.title}
           </h2>
-          <p className="mt-3 text-muted-foreground">{h.testimonials.subtitle}</p>
+          <p className="mt-3 text-background/70">{h.testimonials.subtitle}</p>
         </div>
         <TestimonialsSection items={h.testimonials.items} />
       </ContentSection>
 
       {/* 7. LEAD CAPTURE FORM */}
-      <ContentSection background="light" id="eligibility">
+      <ContentSection background="white" id="eligibility">
         <div className="mx-auto max-w-2xl text-center mb-10">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
             {h.eligibilityForm.eyebrow}
@@ -209,7 +209,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       </ContentSection>
 
       {/* 8. FAQ PREVIEW */}
-      <ContentSection background="white">
+      <ContentSection background="light">
         <div className="text-center mb-10">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
             {h.homeFaq.eyebrow}
@@ -236,7 +236,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         ctaHref={`/${lang}/contact`}
         ctaSecondary={h.finalCta.secondary}
         ctaSecondaryHref={`/${lang}/contact`}
-        background="primary"
+        background="dark"
       />
     </>
   )
