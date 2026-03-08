@@ -20,8 +20,8 @@ export function SiteHeader() {
               <span className="text-lg font-bold text-primary-foreground">CO</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold leading-tight text-foreground">Colorado</span>
-              <span className="text-xs font-medium leading-tight text-primary">Home Grant</span>
+              <span className="text-sm font-bold leading-tight text-foreground">CoFirstTimeBuyer</span>
+              <span className="text-xs font-medium leading-tight text-accent">Grants</span>
             </div>
           </Link>
 

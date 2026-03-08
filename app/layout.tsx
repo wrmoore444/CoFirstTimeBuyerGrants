@@ -8,13 +8,13 @@ const _dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700
 const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const viewport: Viewport = {
-  themeColor: '#1a56db',
+  themeColor: '#002244',
 }
 
 export const metadata: Metadata = {
-  title: 'Colorado Home Grant - Home Buying Assistance',
-  description: 'The Colorado Home Grant is a home buying assistance program designed to help Colorado residents achieve their dream of homeownership. Receive up to $29,048 without paying it back.',
-  generator: 'v0.app',
+  title: 'CoFirstTimeBuyerGrants — Colorado Home Buying Assistance',
+  description: 'CoFirstTimeBuyerGrants connects Colorado first-time home buyers with grant programs that can provide thousands of dollars toward your purchase — money you never have to pay back.',
+  generator: 'next',
   icons: {
     icon: [
       {

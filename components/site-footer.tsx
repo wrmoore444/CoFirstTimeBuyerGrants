@@ -19,8 +19,8 @@ export function SiteFooter() {
                 <span className="text-lg font-bold text-primary-foreground">CO</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-bold leading-tight text-background">Colorado</span>
-                <span className="text-xs font-medium leading-tight text-primary">Home Grant</span>
+                <span className="text-sm font-bold leading-tight text-background">CoFirstTimeBuyer</span>
+                <span className="text-xs font-medium leading-tight text-accent">Grants</span>
               </div>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-background/60">
@@ -31,28 +31,24 @@ export function SiteFooter() {
           <div>
             <h3 className="font-semibold text-background">{f.quickLinks}</h3>
             <nav className="mt-4 flex flex-col gap-2" aria-label="Footer navigation">
-              <Link href="#home" className="text-sm text-background/60 hover:text-primary">{nav.home}</Link>
-              <Link href="#about" className="text-sm text-background/60 hover:text-primary">{nav.about}</Link>
-              <Link href="#program" className="text-sm text-background/60 hover:text-primary">{nav.theGrant}</Link>
-              <Link href="#testimonials" className="text-sm text-background/60 hover:text-primary">{nav.testimonials}</Link>
-              <Link href="#contact" className="text-sm text-background/60 hover:text-primary">{nav.contact}</Link>
+              <Link href="#home" className="text-sm text-background/60 hover:text-accent">{nav.home}</Link>
+              <Link href="#about" className="text-sm text-background/60 hover:text-accent">{nav.about}</Link>
+              <Link href="#program" className="text-sm text-background/60 hover:text-accent">{nav.theGrant}</Link>
+              <Link href="#testimonials" className="text-sm text-background/60 hover:text-accent">{nav.testimonials}</Link>
+              <Link href="#contact" className="text-sm text-background/60 hover:text-accent">{nav.contact}</Link>
             </nav>
           </div>
 
           <div>
             <h3 className="font-semibold text-background">{f.contactInfo}</h3>
             <div className="mt-4 flex flex-col gap-3">
-              <a href="tel:720-735-2832" className="flex items-center gap-2 text-sm text-background/60 hover:text-primary">
+              <a href="tel:TBD" className="flex items-center gap-2 text-sm text-background/60 hover:text-accent">
                 <Phone className="h-4 w-4" />
-                720-735-2832
+                [Phone TBD]
               </a>
-              <a href="tel:720-735-2890" className="flex items-center gap-2 text-sm text-background/60 hover:text-primary">
-                <Phone className="h-4 w-4" />
-                720-735-2890
-              </a>
-              <a href="mailto:info@cohomegrant.com" className="flex items-center gap-2 text-sm text-background/60 hover:text-primary">
+              <a href="mailto:info@cofirsttimebuyergrants.com" className="flex items-center gap-2 text-sm text-background/60 hover:text-accent">
                 <Mail className="h-4 w-4" />
-                info@cohomegrant.com
+                info@cofirsttimebuyergrants.com
               </a>
             </div>
           </div>
