@@ -2,7 +2,6 @@ import { SiteHeader } from "@/components/site-header"
 import { HeroSection } from "@/components/hero-section"
 import { WelcomeSection } from "@/components/welcome-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
-import { WhyChooseUsSection } from "@/components/why-choose-us-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
 import { SiteFooter } from "@/components/site-footer"
@@ -15,7 +14,6 @@ export default function Home() {
         <HeroSection />
         <WelcomeSection />
         <HowItWorksSection />
-        <WhyChooseUsSection />
         <TestimonialsSection />
         <ContactSection />
       </main>

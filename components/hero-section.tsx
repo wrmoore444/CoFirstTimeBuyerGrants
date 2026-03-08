@@ -41,8 +41,23 @@ export function HeroSection() {
             </Link>
           </Button>
           <Button size="lg" variant="outline" asChild className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground text-base px-8">
-            <Link href="#about">{h.ctaSecondary}</Link>
+            <Link href="#program">{h.ctaSecondary}</Link>
           </Button>
+        </div>
+
+        {/* Trust stats strip */}
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border-t border-primary-foreground/20 pt-8">
+          {h.stats.map((stat, i) => (
+            <div key={stat.label} className="flex items-center gap-10">
+              <div className="text-center">
+                <p className="font-serif text-3xl font-bold text-primary">{stat.value}</p>
+                <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-primary-foreground/60">{stat.label}</p>
+              </div>
+              {i < h.stats.length - 1 && (
+                <div className="hidden h-10 w-px bg-primary-foreground/20 sm:block" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
