@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { isValidLang, type Lang } from '@/lib/i18n'
@@ -11,6 +12,27 @@ import { FaqPreviewSection } from '@/components/sections/faq-preview-section'
 import { CtaBannerSection } from '@/components/sections/cta-banner-section'
 import { ContactForm } from '@/components/layout/contact-form'
 import { Button } from '@/components/ui/button'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string; county: string }>
+}): Promise<Metadata> {
+  const { lang, county: countySlug } = await params
+  const countyData = getCounty(countySlug)
+  if (!countyData || !isValidLang(lang)) return {}
+  const content = countyData[lang as Lang]
+  if (lang === 'es') {
+    return {
+      title: `${content.name} - Subsidios para Compradores de Casa | Programas de Asistencia en Colorado`,
+      description: `Explora los subsidios y programas de asistencia para compradores de casa por primera vez que pueden estar disponibles para compradores calificados en ${content.name}. Aprende cómo los programas de asistencia pueden ayudar a reducir los costos iniciales de compra.`,
+    }
+  }
+  return {
+    title: `${content.name} First Time Home Buyer Grants | Colorado Assistance Programs`,
+    description: `Explore first-time homebuyer grants and assistance programs that may be available to qualified buyers in ${content.name}. Learn how assistance programs can help reduce upfront home purchase costs.`,
+  }
+}
 
 export function generateStaticParams() {
   return COUNTIES.flatMap((county) =>
@@ -40,13 +62,15 @@ export default async function CountyPage({
         <span className="mb-4 inline-block rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground backdrop-blur-sm">
           {cp.heroBadge}
         </span>
-        <h1 className="max-w-3xl font-serif text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
+        <h1 className="max-w-4xl text-balance font-serif text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
           {lang === 'en'
-            ? `First-Time Homebuyer Assistance in ${content.name}`
-            : `Asistencia para Compradores por Primera Vez en ${content.name}`}
+            ? `${content.name} First Time Home Buyer Grants and Assistance Programs`
+            : `${content.name} - Subsidios y Programas de Asistencia para Compradores de Casa`}
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
-          {content.heroSubtitle}
+          {lang === 'en'
+            ? `Some buyers in ${content.name} may qualify for homebuyer assistance programs designed to help reduce the upfront cost of purchasing a home.`
+            : `Algunos compradores en ${content.name} podrían calificar para programas de asistencia diseñados para ayudar a reducir los costos iniciales de comprar una casa.`}
         </p>
       </HeroSection>
 
@@ -68,6 +92,11 @@ export default async function CountyPage({
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
             {cp.programEyebrow}
           </span>
+          <h2 className="mt-3 font-serif text-2xl font-bold text-foreground sm:text-3xl">
+            {lang === 'en'
+              ? `Homebuyer Grants and Assistance Programs in ${content.name}`
+              : `Subsidios y Programas de Asistencia para Compradores en ${content.name}`}
+          </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             {content.programBody}
           </p>
@@ -82,7 +111,9 @@ export default async function CountyPage({
             {cp.processEyebrow}
           </span>
           <h2 className="mt-3 font-serif text-3xl font-bold text-foreground sm:text-4xl">
-            {cp.processTitle}
+            {lang === 'en'
+              ? `How First-Time Buyers in ${content.name} Can Explore Eligibility`
+              : `Cómo los Compradores en ${content.name} Pueden Explorar su Elegibilidad`}
           </h2>
         </div>
         <BenefitsGrid items={cp.processSteps} columns={3} variant="card" />
@@ -108,7 +139,9 @@ export default async function CountyPage({
             {cp.formEyebrow}
           </span>
           <h2 className="mt-3 font-serif text-3xl font-bold text-foreground sm:text-4xl">
-            {cp.formTitle}
+            {lang === 'en'
+              ? 'Speak With a Colorado Mortgage Professional'
+              : 'Hable con un Profesional Hipotecario de Colorado'}
           </h2>
           <p className="mt-3 text-muted-foreground">{cp.formSubtitle}</p>
         </div>
