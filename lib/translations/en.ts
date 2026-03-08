@@ -18,33 +18,135 @@ export const en = {
   },
   home: {
     hero: {
-      badge: 'Colorado First-Time Buyer Grant Program',
-      title: 'Do You Qualify for a Colorado Home Buying Grant?',
+      badge: 'Colorado Homebuyer Assistance Programs',
+      title: 'Colorado First-Time Homebuyer Grant Programs',
       subtitle:
-        'Eligible Colorado buyers can receive up to $25,000 in grant money toward their home purchase \u2014 no repayment required.',
-      ctaPrimary: 'Check My Eligibility',
-      ctaSecondary: 'How It Works',
+        'Colorado offers assistance programs that may help reduce the upfront cost of purchasing a home. Find out if you may be eligible to take advantage of these programs.',
+      ctaPrimary: 'Check Your Eligibility',
+      ctaSecondary: 'Request Information',
     },
     stats: [
-      { value: '$25,000', label: 'Maximum Grant' },
-      { value: '$0', label: 'You Ever Repay' },
-      { value: '30+', label: 'Counties Served' },
+      { value: 'Up to $25K', label: 'In Possible Assistance' },
+      { value: '30+', label: 'Colorado Counties' },
+      { value: 'Free', label: 'Consultation' },
     ],
-    welcome: {
-      eyebrow: 'Welcome',
-      title: 'Owning a Home in Colorado Is More Achievable Than You Think',
-      body: "We connect Colorado buyers with grant programs that can put thousands of dollars toward your down payment or closing costs \u2014 with no payback required. Whether you\u2019re a first-time buyer or haven\u2019t owned a home in a few years, you may qualify.",
-      cta: 'Learn How It Works',
+    programOverview: {
+      eyebrow: 'About These Programs',
+      title: 'Colorado Has Programs Designed to Help Homebuyers',
+      body: 'The State of Colorado and participating lenders offer a variety of homebuyer assistance programs. These programs may help reduce the upfront costs associated with purchasing a home — including down payment and closing cost assistance. This website helps Colorado buyers learn about available programs and connect with a licensed Colorado mortgage professional who can help them understand their options.',
+      cta: 'Learn About the Process',
     },
-    servicePreview: {
-      eyebrow: 'What We Offer',
-      title: 'Your Grant. Your Home. Your Future.',
-      items: [
-        { title: 'Grant Assistance', description: 'Up to $25,000 in home buying assistance you never repay.' },
-        { title: 'Colorado-Licensed Team', description: 'Specialists who know every grant program in the state.' },
-        { title: 'Bilingual Service', description: 'Available in English and Spanish, every step of the way.' },
-        { title: 'Free Consultation', description: 'No obligation \u2014 we answer your questions at no cost.' },
+    process: {
+      eyebrow: 'How It Works',
+      title: 'Three Steps to Explore Your Options',
+      steps: [
+        {
+          title: 'Learn About Available Programs',
+          description: 'Explore the types of homebuyer assistance programs that may be available in Colorado and find out what factors affect eligibility.',
+        },
+        {
+          title: 'Speak With a Colorado Mortgage Professional',
+          description: 'Connect with a licensed Colorado mortgage professional who can review your situation and walk you through specific program options.',
+        },
+        {
+          title: 'Apply Assistance Toward Your Home Purchase',
+          description: 'If you qualify, assistance funds can be applied toward your home purchase — helping reduce the upfront costs of becoming a homeowner.',
+        },
       ],
+    },
+    benefits: {
+      eyebrow: 'Why Buyers Explore These Programs',
+      title: 'Assistance Programs May Help You',
+      left: {
+        title: 'Reduce Upfront Costs',
+        body: 'One of the biggest obstacles to homeownership is the upfront cost. Assistance programs may help reduce the amount you need to bring to closing.',
+        items: [
+          'Down payment assistance',
+          'Closing cost assistance',
+          'No repayment required in many programs',
+          'May be combined with FHA and other loan types',
+        ],
+      },
+      right: {
+        title: 'Get Clarity and Guidance',
+        body: "Understanding the mortgage process and available programs can feel overwhelming. Our team of Colorado-licensed mortgage professionals is here to help you understand your options — at no cost to you.",
+        items: [
+          'Understand what programs you may qualify for',
+          'Guidance through every step of the process',
+          'Service available in English and Spanish',
+          'No obligation consultation',
+        ],
+      },
+    },
+    counties: {
+      eyebrow: 'Colorado Service Area',
+      title: 'Serving Buyers Throughout Colorado',
+      subtitle: 'We work with buyers across Colorado, including these counties and more.',
+      preview: [
+        'Denver', 'Adams', 'Arapahoe', 'Jefferson', 'Douglas',
+        'El Paso', 'Larimer', 'Weld', 'Boulder', 'Broomfield',
+        'Mesa', 'Pueblo',
+      ],
+      viewAll: 'View All Counties',
+    },
+    testimonials: {
+      eyebrow: 'What Our Clients Say',
+      title: 'Real Colorado Buyers, Real Results',
+      subtitle: 'We help Colorado families take the first step toward homeownership.',
+      items: [
+        {
+          heading: 'I did not know where to start.',
+          quote: 'I had no idea assistance programs like this existed. The team walked me through everything and made the whole process much less intimidating. I am so glad I reached out.',
+          author: 'Maria R.',
+          location: 'Aurora, CO',
+        },
+        {
+          heading: 'Very knowledgeable and helpful.',
+          quote: 'They answered every question I had and never made me feel pressured. I always felt like they had my best interest in mind. Highly recommend.',
+          author: 'James T.',
+          location: 'Fort Collins, CO',
+        },
+        {
+          heading: 'The process was simpler than I expected.',
+          quote: 'I was nervous about buying my first home, but they made everything clear and manageable. I would not have known about these programs without them.',
+          author: 'Sandra L.',
+          location: 'Colorado Springs, CO',
+        },
+      ],
+    },
+    eligibilityForm: {
+      eyebrow: 'Get Started',
+      title: 'Check Your Eligibility',
+      subtitle: 'Complete the form below and a Colorado-licensed mortgage professional will follow up to discuss your options. There is no cost and no obligation.',
+    },
+    homeFaq: {
+      eyebrow: 'Common Questions',
+      title: 'Frequently Asked Questions',
+      items: [
+        {
+          question: 'Who may qualify for homebuyer assistance programs?',
+          answer: 'Eligibility varies by program and depends on factors such as household income, location, purchase price, and whether you are a first-time buyer. A mortgage professional can help you determine which programs you may qualify for.',
+        },
+        {
+          question: 'Do I have to be a first-time homebuyer?',
+          answer: 'Not always. Some programs are available to buyers who have not owned a home in the past three years, while others may have different requirements. We can help you understand the specific rules for each program.',
+        },
+        {
+          question: 'Can homebuyer assistance be used with FHA or other loan types?',
+          answer: 'In many cases, yes. Some assistance programs are designed to work alongside FHA loans, conventional loans, and other financing options. Program compatibility depends on the specific program and lender.',
+        },
+        {
+          question: 'How do I find out which programs are available to me?',
+          answer: 'The best way is to speak with a licensed Colorado mortgage professional who specializes in these programs. Fill out the form above and we will reach out to discuss your specific situation.',
+        },
+      ],
+      viewAll: 'See All FAQs',
+    },
+    finalCta: {
+      title: 'Ready to Explore Your Options?',
+      subtitle: 'Speak with a Colorado-licensed mortgage professional at no cost. Learn what programs you may qualify for.',
+      primary: 'Check Your Eligibility',
+      secondary: 'Schedule a Consultation',
     },
   },
   howItWorks: {
@@ -199,6 +301,8 @@ export const en = {
       emailPlaceholder: 'john@example.com',
       phone: 'Phone',
       phonePlaceholder: '(720) 555-0100',
+      county: 'County',
+      countyPlaceholder: 'Select your county',
       message: 'Message',
       messagePlaceholder: 'Tell us about your home buying goals...',
       submit: 'Submit My Request',

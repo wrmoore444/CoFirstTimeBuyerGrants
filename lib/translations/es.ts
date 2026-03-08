@@ -20,33 +20,135 @@ export const es: Dictionary = {
   },
   home: {
     hero: {
-      badge: 'Programa de Subvenci\u00f3n para Compradores en Colorado',
-      title: '\u00bfCalificas para una subvenci\u00f3n de compra de vivienda en Colorado?',
+      badge: 'Programas de Asistencia para Compradores en Colorado',
+      title: 'Programas de Subvención para Compradores de Casa por Primera Vez en Colorado',
       subtitle:
-        'Los compradores elegibles en Colorado pueden recibir hasta $25,000 en dinero de subvenci\u00f3n para su compra de vivienda \u2014 sin necesidad de devolverlo.',
+        'Colorado ofrece programas de asistencia que pueden ayudar a reducir los costos iniciales de comprar una casa. Descubre si podrías ser elegible para aprovechar estos programas.',
       ctaPrimary: 'Verificar Mi Elegibilidad',
-      ctaSecondary: 'C\u00f3mo Funciona',
+      ctaSecondary: 'Solicitar Información',
     },
     stats: [
-      { value: '$25,000', label: 'Subvenci\u00f3n M\u00e1xima' },
-      { value: '$0', label: 'Que Devolver\u00e1s' },
-      { value: '30+', label: 'Condados Atendidos' },
+      { value: 'Hasta $25K', label: 'En Posible Asistencia' },
+      { value: '30+', label: 'Condados de Colorado' },
+      { value: 'Gratis', label: 'Consulta' },
     ],
-    welcome: {
-      eyebrow: 'Bienvenido',
-      title: 'Tener una casa en Colorado es m\u00e1s alcanzable de lo que crees',
-      body: 'Conectamos a los compradores de Colorado con programas de subvenci\u00f3n que pueden aportar miles de d\u00f3lares para tu pago inicial o costos de cierre \u2014 sin necesidad de devolverlos.',
-      cta: 'C\u00f3mo Funciona',
+    programOverview: {
+      eyebrow: 'Sobre Estos Programas',
+      title: 'Colorado Tiene Programas Diseñados para Ayudar a los Compradores',
+      body: 'El Estado de Colorado y los prestamistas participantes ofrecen una variedad de programas de asistencia para compradores de vivienda. Estos programas pueden ayudar a reducir los costos iniciales asociados con la compra de una casa. Este sitio web ayuda a los compradores de Colorado a conocer los programas disponibles y conectarse con un profesional hipotecario con licencia en Colorado.',
+      cta: 'Conoce el Proceso',
     },
-    servicePreview: {
-      eyebrow: 'Lo Que Ofrecemos',
-      title: 'Tu Subvenci\u00f3n. Tu Hogar. Tu Futuro.',
-      items: [
-        { title: 'Asistencia de Subvenci\u00f3n', description: 'Hasta $25,000 en asistencia para comprar vivienda que no tienes que devolver.' },
-        { title: 'Equipo con Licencia en Colorado', description: 'Especialistas que conocen cada programa de subvenci\u00f3n en el estado.' },
-        { title: 'Servicio Biling\u00fce', description: 'Disponible en ingl\u00e9s y espa\u00f1ol, en cada paso del proceso.' },
-        { title: 'Consulta Gratuita', description: 'Sin compromiso \u2014 respondemos tus preguntas sin costo.' },
+    process: {
+      eyebrow: 'Cómo Funciona',
+      title: 'Tres Pasos para Explorar Tus Opciones',
+      steps: [
+        {
+          title: 'Conoce los Programas Disponibles',
+          description: 'Explora los tipos de programas de asistencia para compradores de vivienda que pueden estar disponibles en Colorado y qué factores afectan la elegibilidad.',
+        },
+        {
+          title: 'Habla con un Profesional Hipotecario de Colorado',
+          description: 'Conéctate con un profesional hipotecario con licencia en Colorado que pueda revisar tu situación y guiarte a través de las opciones específicas del programa.',
+        },
+        {
+          title: 'Aplica la Asistencia a Tu Compra',
+          description: 'Si calificas, los fondos de asistencia pueden aplicarse a tu compra de vivienda, ayudando a reducir los costos iniciales de convertirte en propietario.',
+        },
       ],
+    },
+    benefits: {
+      eyebrow: 'Por Qué los Compradores Exploran Estos Programas',
+      title: 'Los Programas de Asistencia Pueden Ayudarte',
+      left: {
+        title: 'Reducir los Costos Iniciales',
+        body: 'Uno de los mayores obstáculos para ser propietario es el costo inicial. Los programas de asistencia pueden ayudar a reducir la cantidad que necesitas llevar al cierre.',
+        items: [
+          'Asistencia para el pago inicial',
+          'Asistencia para los costos de cierre',
+          'Sin reembolso requerido en muchos programas',
+          'Puede combinarse con préstamos FHA y otros tipos',
+        ],
+      },
+      right: {
+        title: 'Obtén Claridad y Orientación',
+        body: 'Entender el proceso hipotecario y los programas disponibles puede sentirse abrumador. Nuestro equipo de profesionales hipotecarios con licencia en Colorado está aquí para ayudarte — sin costo para ti.',
+        items: [
+          'Entiende para qué programas podrías calificar',
+          'Orientación en cada paso del proceso',
+          'Servicio disponible en inglés y español',
+          'Consulta sin compromiso',
+        ],
+      },
+    },
+    counties: {
+      eyebrow: 'Área de Servicio en Colorado',
+      title: 'Atendemos Compradores en Todo Colorado',
+      subtitle: 'Trabajamos con compradores en todo Colorado, incluyendo estos condados y más.',
+      preview: [
+        'Denver', 'Adams', 'Arapahoe', 'Jefferson', 'Douglas',
+        'El Paso', 'Larimer', 'Weld', 'Boulder', 'Broomfield',
+        'Mesa', 'Pueblo',
+      ],
+      viewAll: 'Ver Todos los Condados',
+    },
+    testimonials: {
+      eyebrow: 'Lo Que Dicen Nuestros Clientes',
+      title: 'Compradores Reales en Colorado, Resultados Reales',
+      subtitle: 'Ayudamos a las familias de Colorado a dar el primer paso hacia ser propietarios.',
+      items: [
+        {
+          heading: 'No sabía por dónde empezar.',
+          quote: 'No tenía idea de que existían programas de asistencia como este. El equipo me guió en todo y hizo que el proceso fuera mucho menos intimidante. Estoy muy feliz de haber contactado.',
+          author: 'Maria R.',
+          location: 'Aurora, CO',
+        },
+        {
+          heading: 'Muy conocedores y serviciales.',
+          quote: 'Respondieron cada pregunta que tenía y nunca me hicieron sentir presionado. Siempre sentí que tenían mi mejor interés en mente. Muy recomendados.',
+          author: 'James T.',
+          location: 'Fort Collins, CO',
+        },
+        {
+          heading: 'El proceso fue más simple de lo esperado.',
+          quote: 'Estaba nervioso por comprar mi primera casa, pero lo hicieron todo claro y manejable. No habría conocido estos programas sin ellos.',
+          author: 'Sandra L.',
+          location: 'Colorado Springs, CO',
+        },
+      ],
+    },
+    eligibilityForm: {
+      eyebrow: 'Comenzar',
+      title: 'Verifica Tu Elegibilidad',
+      subtitle: 'Completa el formulario y un profesional hipotecario con licencia en Colorado te contactará para discutir tus opciones. Sin costo y sin compromiso.',
+    },
+    homeFaq: {
+      eyebrow: 'Preguntas Comunes',
+      title: 'Preguntas Frecuentes',
+      items: [
+        {
+          question: '¿Quién puede calificar para los programas de asistencia?',
+          answer: 'La elegibilidad varía según el programa y depende de factores como los ingresos del hogar, la ubicación, el precio de compra y si eres comprador por primera vez. Un profesional hipotecario puede ayudarte a determinar para qué programas podrías calificar.',
+        },
+        {
+          question: '¿Tengo que ser comprador de casa por primera vez?',
+          answer: 'No siempre. Algunos programas están disponibles para compradores que no han sido propietarios en los últimos tres años, mientras que otros pueden tener requisitos diferentes. Podemos ayudarte a entender las reglas específicas de cada programa.',
+        },
+        {
+          question: '¿Se puede usar la asistencia con préstamos FHA u otros tipos?',
+          answer: 'En muchos casos, sí. Algunos programas de asistencia están diseñados para funcionar junto con préstamos FHA, préstamos convencionales y otras opciones de financiamiento. La compatibilidad del programa depende del programa y el prestamista específicos.',
+        },
+        {
+          question: '¿Cómo sé qué programas están disponibles para mí?',
+          answer: 'La mejor manera es hablar con un profesional hipotecario con licencia en Colorado que se especialice en estos programas. Completa el formulario de arriba y nos comunicaremos para discutir tu situación específica.',
+        },
+      ],
+      viewAll: 'Ver Todas las Preguntas',
+    },
+    finalCta: {
+      title: '¿Listo para Explorar Tus Opciones?',
+      subtitle: 'Habla con un profesional hipotecario con licencia en Colorado sin costo. Conoce para qué programas podrías calificar.',
+      primary: 'Verificar Mi Elegibilidad',
+      secondary: 'Programar una Consulta',
     },
   },
   howItWorks: {
@@ -196,8 +298,10 @@ export const es: Dictionary = {
       lastNamePlaceholder: 'Garc\u00eda',
       email: 'Correo electr\u00f3nico',
       emailPlaceholder: 'juan@ejemplo.com',
-      phone: 'Tel\u00e9fono',
+      phone: 'Teléfono',
       phonePlaceholder: '(720) 555-0100',
+      county: 'Condado',
+      countyPlaceholder: 'Selecciona tu condado',
       message: 'Mensaje',
       messagePlaceholder: 'Cu\u00e9ntanos sobre tus metas de compra de vivienda...',
       submit: 'Enviar Mi Solicitud',
