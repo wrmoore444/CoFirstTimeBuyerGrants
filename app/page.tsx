@@ -1,23 +1,5 @@
-import { SiteHeader } from "@/components/site-header"
-import { HeroSection } from "@/components/hero-section"
-import { WelcomeSection } from "@/components/welcome-section"
-import { HowItWorksSection } from "@/components/how-it-works-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { ContactSection } from "@/components/contact-section"
-import { SiteFooter } from "@/components/site-footer"
+import { redirect } from 'next/navigation'
 
-export default function Home() {
-  return (
-    <>
-      <SiteHeader />
-      <main>
-        <HeroSection />
-        <WelcomeSection />
-        <HowItWorksSection />
-        <TestimonialsSection />
-        <ContactSection />
-      </main>
-      <SiteFooter />
-    </>
-  )
+export default function RootPage() {
+  redirect('/en')
 }
