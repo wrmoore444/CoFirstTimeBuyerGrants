@@ -11,13 +11,13 @@
   --card-foreground: oklch(0.15 0.06 247);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.06 247);
-  --primary: oklch(0.18 0.08 247);       /* Broncos navy #002244 */
+  --primary: oklch(0.65 0.22 35);        /* Broncos orange #FB4F14 */
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.93 0.02 247);
   --secondary-foreground: oklch(0.18 0.08 247);
   --muted: oklch(0.96 0.005 247);
   --muted-foreground: oklch(0.50 0.03 247);
-  --accent: oklch(0.65 0.22 35);         /* Broncos orange #FB4F14 */
+  --accent: oklch(0.18 0.08 247);        /* Broncos navy #002244 */
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
@@ -32,10 +32,10 @@
   --radius: 0.5rem;
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.15 0.06 247);
-  --sidebar-primary: oklch(0.18 0.08 247);
+  --sidebar-primary: oklch(0.65 0.22 35);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.93 0.02 247);
-  --sidebar-accent-foreground: oklch(0.18 0.08 247);
+  --sidebar-accent: oklch(0.18 0.08 247);
+  --sidebar-accent-foreground: oklch(1 0 0);
   --sidebar-border: oklch(0.88 0.02 247);
   --sidebar-ring: oklch(0.65 0.22 35);
 }

@@ -14,7 +14,7 @@ export const translations = {
       badge: "Colorado First-Time Buyer Grant Program",
       title: "Do You Qualify for a Colorado Home Buying Grant?",
       subtitle:
-        "Eligible Colorado buyers can receive up to $29,048 in grant money toward their home purchase \u2014 no repayment required. Let\u2019s find out if you qualify.",
+        "Eligible Colorado buyers can receive up to $25,000 in grant money toward their home purchase \u2014 no repayment required. Let\u2019s find out if you qualify.",
       ctaPrimary: "Check My Eligibility",
       ctaSecondary: "How It Works",
     },
@@ -24,7 +24,7 @@ export const translations = {
       p1: "We know the path to homeownership can feel overwhelming \u2014 especially when you\u2019re doing it for the first time. CoFirstTimeBuyerGrants connects Colorado buyers with grant programs that can put thousands of dollars toward your down payment or closing costs, with no payback required.",
       p2: "Whether you\u2019re a first-time buyer or you haven\u2019t owned a home in a few years, you may qualify. Our process is simple, and our team walks you through every step.",
       cta: "Learn How the Grant Works",
-      grantAmount: "$29,048",
+      grantAmount: "$25,000",
       grantLabel: "Maximum Grant Amount",
     },
     features: {
@@ -35,7 +35,7 @@ export const translations = {
       items: [
         {
           title: "Grant Assistance",
-          description: "Up to $29,048 in home buying assistance you don\u2019t have to pay back.",
+          description: "Up to $25,000 in home buying assistance you don\u2019t have to pay back.",
         },
         {
           title: "Our Team",
@@ -53,11 +53,16 @@ export const translations = {
     },
     whyChooseUs: {
       eyebrow: "Why Work With Us",
+      stats: [
+        { value: "$25,000", label: "Maximum Grant Amount" },
+        { value: "$0", label: "Repayment Required" },
+        { value: "30+", label: "Colorado Counties Served" },
+      ],
       title: "Built Around Your Success",
       body: "CoFirstTimeBuyerGrants was created to help Colorado buyers take advantage of grant programs that many people don\u2019t even know exist. We handle the details so you can focus on finding your home.",
       benefits: [
         "Available to first-time and qualifying repeat buyers",
-        "Up to $29,048 in grant assistance",
+        "Up to $25,000 in grant assistance",
         "Zero repayment \u2014 it\u2019s not a loan",
         "Straightforward application with expert guidance",
         "Free personalized consultation",
@@ -143,7 +148,7 @@ export const translations = {
       badge: "Programa de Subvenci\u00f3n para Compradores en Colorado",
       title: "\u00bfCalificas para una subvenci\u00f3n de compra de vivienda en Colorado?",
       subtitle:
-        "Los compradores elegibles en Colorado pueden recibir hasta $29,048 en dinero de subvenci\u00f3n para su compra de vivienda \u2014 sin necesidad de devolverlo. Averig\u00fcemos si calificas.",
+        "Los compradores elegibles en Colorado pueden recibir hasta $25,000 en dinero de subvenci\u00f3n para su compra de vivienda \u2014 sin necesidad de devolverlo. Averig\u00fcemos si calificas.",
       ctaPrimary: "Verificar Mi Elegibilidad",
       ctaSecondary: "C\u00f3mo Funciona",
     },
@@ -153,7 +158,7 @@ export const translations = {
       p1: "Sabemos que el camino hacia la propiedad de vivienda puede sentirse abrumador, especialmente si es la primera vez. CoFirstTimeBuyerGrants conecta a los compradores de Colorado con programas de subvenci\u00f3n que pueden aportar miles de d\u00f3lares para tu pago inicial o costos de cierre, sin necesidad de devolverlos.",
       p2: "Ya seas comprador por primera vez o no hayas tenido una casa en algunos a\u00f1os, puedes calificar. Nuestro proceso es simple y nuestro equipo te gu\u00eda en cada paso.",
       cta: "Aprende C\u00f3mo Funciona el Subsidio",
-      grantAmount: "$29,048",
+      grantAmount: "$25,000",
       grantLabel: "Monto M\u00e1ximo de Subvenci\u00f3n",
     },
     features: {
@@ -164,7 +169,7 @@ export const translations = {
       items: [
         {
           title: "Asistencia de Subvenci\u00f3n",
-          description: "Hasta $29,048 en asistencia para comprar vivienda que no tienes que devolver.",
+          description: "Hasta $25,000 en asistencia para comprar vivienda que no tienes que devolver.",
         },
         {
           title: "Nuestro Equipo",
@@ -182,11 +187,16 @@ export const translations = {
     },
     whyChooseUs: {
       eyebrow: "Por Qu\u00e9 Trabajar Con Nosotros",
+      stats: [
+        { value: "$25,000", label: "Monto M\u00e1ximo de Subvenci\u00f3n" },
+        { value: "$0", label: "Reembolso Requerido" },
+        { value: "30+", label: "Condados de Colorado Atendidos" },
+      ],
       title: "Construido Para Tu \u00c9xito",
       body: "CoFirstTimeBuyerGrants fue creado para ayudar a los compradores de Colorado a aprovechar programas de subvenci\u00f3n que muchas personas ni siquiera saben que existen. Nos encargamos de los detalles para que puedas concentrarte en encontrar tu hogar.",
       benefits: [
         "Disponible para compradores por primera vez y compradores habituales que califiquen",
-        "Hasta $29,048 en asistencia de subvenci\u00f3n",
+        "Hasta $25,000 en asistencia de subvenci\u00f3n",
         "Sin reembolso \u2014 no es un pr\u00e9stamo",
         "Solicitud sencilla con orientaci\u00f3n experta",
         "Consulta personalizada gratuita",
