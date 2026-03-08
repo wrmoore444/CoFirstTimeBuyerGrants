@@ -327,6 +327,94 @@ export const en = {
     copyright: 'CoFirstTimeBuyerGrants. All rights reserved.',
     disclosure: 'This is not a commitment to lend. All loans subject to credit approval. Program availability subject to change.',
   },
+  countiesOverview: {
+    heroBadge: 'Service Area',
+    heroTitle: 'First-Time Homebuyer Assistance in Colorado Counties',
+    heroSubtitle: 'Assistance programs and housing markets can vary by county. Explore your local area to learn what options may be available to you.',
+    gridEyebrow: 'Counties We Serve',
+    gridTitle: 'Find Your County',
+    gridSubtitle: 'Select a county below to explore homebuyer assistance information for your local area.',
+    learnMore: 'Learn More',
+    infoEyebrow: 'About These Programs',
+    infoTitle: 'Program Availability Varies by Location',
+    infoBody: 'Homebuyer assistance programs depend on multiple factors including income, purchase price, location, and buyer eligibility. This site is designed to help you explore your options and connect with a licensed Colorado mortgage professional who can provide guidance based on your specific situation. No outcome is guaranteed, and eligibility must be determined through consultation.',
+    ctaTitle: 'Ready to Explore Your Options?',
+    ctaSubtitle: 'Speak with a Colorado-licensed mortgage professional at no cost.',
+    ctaPrimary: 'Check Your Eligibility',
+    ctaSecondary: 'Request More Information',
+  },
+  countyPage: {
+    heroBadge: 'Homebuyer Assistance',
+    processEyebrow: 'How It Works',
+    processTitle: 'Three Steps to Explore Your Options',
+    processSteps: [
+      {
+        title: '1. Learn About Available Programs',
+        description: 'Explore the types of homebuyer assistance programs that may be available in your county and find out what factors affect eligibility.',
+      },
+      {
+        title: '2. Speak With a Colorado Mortgage Professional',
+        description: 'Connect with a licensed Colorado mortgage professional who can review your situation and walk you through specific program options.',
+      },
+      {
+        title: '3. Apply Assistance Toward Your Home Purchase',
+        description: 'If you qualify, assistance funds can be applied toward your home purchase — helping reduce the upfront costs of becoming a homeowner.',
+      },
+    ],
+    testimonialsEyebrow: 'What Our Clients Say',
+    testimonialsTitle: 'Real Colorado Buyers, Real Results',
+    testimonialsItems: [
+      {
+        heading: 'I did not know where to start.',
+        quote: 'I had no idea assistance programs like this existed. The team walked me through everything and made the whole process much less intimidating.',
+        author: 'Maria R.',
+        location: 'Aurora, CO',
+      },
+      {
+        heading: 'Very knowledgeable and helpful.',
+        quote: 'They answered every question I had and never made me feel pressured. I always felt like they had my best interest in mind.',
+        author: 'James T.',
+        location: 'Fort Collins, CO',
+      },
+      {
+        heading: 'The process was simpler than I expected.',
+        quote: 'I was nervous about buying my first home, but they made everything clear and manageable.',
+        author: 'Sandra L.',
+        location: 'Colorado Springs, CO',
+      },
+    ],
+    formEyebrow: 'Get Started',
+    formTitle: 'Check Your Eligibility',
+    formSubtitle: 'Complete the form and a Colorado-licensed mortgage professional will follow up to discuss your options. No cost, no obligation.',
+    formReassurance: 'There is no cost to explore your eligibility, and speaking with a mortgage professional does not obligate you to apply for a loan.',
+    faqEyebrow: 'Common Questions',
+    faqTitle: 'Frequently Asked Questions',
+    faqItems: [
+      {
+        question: 'Who may qualify for homebuyer assistance programs?',
+        answer: 'Eligibility varies by program and depends on factors such as household income, location, purchase price, and whether you are a first-time buyer.',
+      },
+      {
+        question: 'Do I have to be a first-time homebuyer?',
+        answer: 'Not always. Some programs are available to buyers who have not owned a home in the past three years. We can help you understand the specific rules.',
+      },
+      {
+        question: 'Can homebuyer assistance be used with FHA or other loan types?',
+        answer: 'In many cases, yes. Some assistance programs are designed to work alongside FHA loans and other financing options. Program compatibility depends on the specific program.',
+      },
+      {
+        question: 'Is there a cost to speak with your team?',
+        answer: 'No. There is no cost to explore your eligibility or speak with our team. We are paid at closing by the lender.',
+      },
+    ],
+    faqViewAll: 'See All FAQs',
+    ctaTitle: 'Ready to Explore Your Options?',
+    ctaSubtitle: 'Speak with a Colorado-licensed mortgage professional at no cost. Learn what programs may apply to your situation.',
+    ctaPrimary: 'Check Your Eligibility',
+    ctaSecondary: 'Schedule a Consultation',
+    programEyebrow: 'Assistance Programs',
+    infoDisclaimer: 'Eligibility for homebuyer assistance programs must be determined through a consultation with a licensed mortgage professional. Program availability and terms are subject to change.',
+  },
 }
 
 export type Dictionary = typeof en

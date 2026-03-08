@@ -18,9 +18,10 @@ const CO_COUNTIES = [
 interface Props {
   form: Dictionary['contact']['form']
   showMessage?: boolean
+  defaultCounty?: string
 }
 
-export function ContactForm({ form, showMessage = true }: Props) {
+export function ContactForm({ form, showMessage = true, defaultCounty }: Props) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -100,7 +101,7 @@ export function ContactForm({ form, showMessage = true }: Props) {
           />
         </FormField>
         <FormField label={form.county}>
-          <select name="county" className={selectClass} defaultValue="" required>
+          <select name="county" className={selectClass} defaultValue={defaultCounty ?? ''} required>
             <option value="" disabled>{form.countyPlaceholder}</option>
             {CO_COUNTIES.map((c) => (
               <option key={c} value={c}>{c}</option>
