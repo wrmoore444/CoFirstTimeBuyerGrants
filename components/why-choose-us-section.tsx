@@ -14,9 +14,6 @@ export function WhyChooseUsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">{w.eyebrow}</span>
-          <h2 className="mt-3 text-balance font-serif text-3xl font-bold text-background sm:text-4xl">
-            {w.title}
-          </h2>
         </div>
 
         {/* Stats bar */}
