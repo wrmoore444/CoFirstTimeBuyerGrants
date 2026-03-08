@@ -37,7 +37,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-primary-foreground/80">
           {h.hero.subtitle}
         </p>
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+        <p className="mt-3 max-w-xl text-sm text-primary-foreground/60">
+          {h.hero.microTrust}
+        </p>
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
           <Button size="lg" asChild className="text-base px-8">
             <Link href={`/${lang}/contact`}>
               {h.hero.ctaPrimary}
@@ -199,6 +202,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
         <div className="mx-auto max-w-xl">
           <ContactForm form={dict.contact.form} showMessage={false} />
+          <p className="mt-4 text-center text-xs text-muted-foreground">
+            {h.eligibilityForm.reassurance}
+          </p>
         </div>
       </ContentSection>
 

@@ -21,9 +21,11 @@ export const es: Dictionary = {
   home: {
     hero: {
       badge: 'Programas de Asistencia para Compradores en Colorado',
-      title: 'Programas de Subvención para Compradores de Casa por Primera Vez en Colorado',
+      title: '¿Podrías Calificar para Asistencia de Compra de Vivienda en Colorado?',
       subtitle:
-        'Colorado ofrece programas de asistencia que pueden ayudar a reducir los costos iniciales de comprar una casa. Descubre si podrías ser elegible para aprovechar estos programas.',
+        'Muchos compradores en Colorado podrían calificar para programas diseñados para ayudar a reducir los costos iniciales de comprar una casa.',
+      microTrust:
+        'Explora los programas de asistencia disponibles y habla con un profesional hipotecario de Colorado sobre tus opciones.',
       ctaPrimary: 'Verificar Mi Elegibilidad',
       ctaSecondary: 'Solicitar Información',
     },
@@ -35,7 +37,7 @@ export const es: Dictionary = {
     programOverview: {
       eyebrow: 'Sobre Estos Programas',
       title: 'Colorado Tiene Programas Diseñados para Ayudar a los Compradores',
-      body: 'El Estado de Colorado y los prestamistas participantes ofrecen una variedad de programas de asistencia para compradores de vivienda. Estos programas pueden ayudar a reducir los costos iniciales asociados con la compra de una casa. Este sitio web ayuda a los compradores de Colorado a conocer los programas disponibles y conectarse con un profesional hipotecario con licencia en Colorado.',
+      body: 'Algunos compradores en Colorado podrían calificar para programas de asistencia diseñados para ayudar a reducir los costos iniciales de comprar una casa. Este sitio te ayuda a explorar las opciones disponibles y conectarte con un profesional hipotecario con licencia en Colorado que puede ayudarte a entender qué programas podrían aplicar a tu situación.',
       cta: 'Conoce el Proceso',
     },
     process: {
@@ -120,6 +122,7 @@ export const es: Dictionary = {
       eyebrow: 'Comenzar',
       title: 'Verifica Tu Elegibilidad',
       subtitle: 'Completa el formulario y un profesional hipotecario con licencia en Colorado te contactará para discutir tus opciones. Sin costo y sin compromiso.',
+      reassurance: 'No hay costo para explorar tu elegibilidad, y hablar con un profesional hipotecario no te obliga a solicitar un préstamo.',
     },
     homeFaq: {
       eyebrow: 'Preguntas Comunes',

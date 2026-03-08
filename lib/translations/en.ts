@@ -19,9 +19,11 @@ export const en = {
   home: {
     hero: {
       badge: 'Colorado Homebuyer Assistance Programs',
-      title: 'Colorado First-Time Homebuyer Grant Programs',
+      title: 'Could You Qualify for Colorado First-Time Homebuyer Assistance?',
       subtitle:
-        'Colorado offers assistance programs that may help reduce the upfront cost of purchasing a home. Find out if you may be eligible to take advantage of these programs.',
+        'Many Colorado buyers may qualify for programs designed to help reduce the upfront cost of purchasing a home.',
+      microTrust:
+        'Explore available homebuyer assistance programs and speak with a Colorado mortgage professional about your options.',
       ctaPrimary: 'Check Your Eligibility',
       ctaSecondary: 'Request Information',
     },
@@ -33,7 +35,7 @@ export const en = {
     programOverview: {
       eyebrow: 'About These Programs',
       title: 'Colorado Has Programs Designed to Help Homebuyers',
-      body: 'The State of Colorado and participating lenders offer a variety of homebuyer assistance programs. These programs may help reduce the upfront costs associated with purchasing a home — including down payment and closing cost assistance. This website helps Colorado buyers learn about available programs and connect with a licensed Colorado mortgage professional who can help them understand their options.',
+      body: 'Some Colorado buyers may qualify for homebuyer assistance programs designed to help reduce the upfront costs of purchasing a home. This site helps you explore available options and connect with a licensed Colorado mortgage professional who can help you understand which programs may apply to your situation.',
       cta: 'Learn About the Process',
     },
     process: {
@@ -118,6 +120,7 @@ export const en = {
       eyebrow: 'Get Started',
       title: 'Check Your Eligibility',
       subtitle: 'Complete the form below and a Colorado-licensed mortgage professional will follow up to discuss your options. There is no cost and no obligation.',
+      reassurance: 'There is no cost to explore your eligibility, and speaking with a mortgage professional does not obligate you to apply for a loan.',
     },
     homeFaq: {
       eyebrow: 'Common Questions',
