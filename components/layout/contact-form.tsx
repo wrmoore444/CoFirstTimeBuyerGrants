@@ -108,6 +108,14 @@ export function ContactForm({ form, showMessage = true, defaultCounty }: Props) 
             ))}
           </select>
         </FormField>
+        <FormField label={form.estimatedPurchasePrice}>
+          <select name="estimatedPurchasePrice" className={selectClass} defaultValue="">
+            <option value="">{form.estimatedPurchasePricePlaceholder}</option>
+            {form.purchasePriceOptions.map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
+        </FormField>
         {showMessage && (
           <FormField label={form.message}>
             <textarea
