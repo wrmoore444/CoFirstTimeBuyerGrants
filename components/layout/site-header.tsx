@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { key: 'howItWorks' as const, href: '/how-it-works' },
   { key: 'whoMayQualify' as const, href: '/who-qualifies' },
   { key: 'counties' as const, href: '/counties' },
+  { key: 'learn' as const, href: '/learn' },
   { key: 'about' as const, href: '/about' },
   { key: 'faq' as const, href: '/faq' },
   { key: 'contact' as const, href: '/contact' },

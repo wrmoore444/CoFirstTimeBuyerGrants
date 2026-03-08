@@ -4,6 +4,7 @@ export const en = {
     howItWorks: 'How It Works',
     whoMayQualify: 'Who May Qualify',
     counties: 'Counties',
+    learn: 'Learn',
     about: 'About',
     faq: 'FAQ',
     contact: 'Contact',

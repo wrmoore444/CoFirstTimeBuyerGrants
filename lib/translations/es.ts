@@ -6,6 +6,7 @@ export const es: Dictionary = {
     howItWorks: 'C\u00f3mo Funciona',
     whoMayQualify: 'Qui\u00e9n Puede Calificar',
     counties: 'Condados',
+    learn: 'Aprende',
     about: 'Nosotros',
     faq: 'Preguntas',
     contact: 'Contacto',
