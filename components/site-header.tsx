@@ -15,20 +15,21 @@ export function SiteHeader() {
   const nav = t.nav
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
-    NAV_SECTIONS.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id)
-        },
-        { rootMargin: "-40% 0px -40% 0px" }
-      )
-      observer.observe(el)
-      observers.push(observer)
-    })
-    return () => observers.forEach((o) => o.disconnect())
+    const HEADER_HEIGHT = 68
+    const handleScroll = () => {
+      const scrollY = window.scrollY + HEADER_HEIGHT + 8
+      let current = "home"
+      for (const id of NAV_SECTIONS) {
+        const el = document.getElementById(id)
+        if (el && el.offsetTop <= scrollY) {
+          current = id
+        }
+      }
+      setActiveSection(current)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   function navClass(section: string) {

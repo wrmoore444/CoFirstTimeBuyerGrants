@@ -51,6 +51,29 @@ export const translations = {
         },
       ],
     },
+    howItWorks: {
+      eyebrow: "The Process",
+      title: "Three Steps to Your Grant",
+      subtitle: "We've simplified the path to homeownership. Here's exactly what to expect.",
+      steps: [
+        {
+          number: "1",
+          title: "Check Your Eligibility",
+          description: "Fill out our quick form — no obligation, no hard credit pull. We'll let you know right away what you may qualify for.",
+        },
+        {
+          number: "2",
+          title: "Meet With Our Team",
+          description: "We'll review your situation and walk you through every grant option available to you, completely free of charge.",
+        },
+        {
+          number: "3",
+          title: "Close on Your Home",
+          description: "Your grant funds are applied directly at closing. No repayment — ever. You walk away with keys and money still in your pocket.",
+        },
+      ],
+      cta: "Check My Eligibility",
+    },
     whyChooseUs: {
       eyebrow: "Why Work With Us",
       stats: [
@@ -184,6 +207,29 @@ export const translations = {
           description: "Con\u00e9ctate con nuestro equipo para una conversaci\u00f3n gratuita y sin compromiso.",
         },
       ],
+    },
+    howItWorks: {
+      eyebrow: "El Proceso",
+      title: "Tres Pasos Hacia Tu Subvenci\u00f3n",
+      subtitle: "Hemos simplificado el camino hacia la propiedad de vivienda. Esto es exactamente lo que puedes esperar.",
+      steps: [
+        {
+          number: "1",
+          title: "Verifica Tu Elegibilidad",
+          description: "Completa nuestro formulario r\u00e1pido \u2014 sin compromiso, sin consulta de cr\u00e9dito. Te informaremos de inmediato para qu\u00e9 puedes calificar.",
+        },
+        {
+          number: "2",
+          title: "Habla Con Nuestro Equipo",
+          description: "Revisaremos tu situaci\u00f3n y te explicaremos todas las opciones de subvenci\u00f3n disponibles para ti, completamente gratis.",
+        },
+        {
+          number: "3",
+          title: "Cierra Tu Casa",
+          description: "Los fondos de la subvenci\u00f3n se aplican directamente al cierre. Sin reembolso \u2014 nunca. Sales con las llaves y el dinero a\u00fan en tu bolsillo.",
+        },
+      ],
+      cta: "Verificar Mi Elegibilidad",
     },
     whyChooseUs: {
       eyebrow: "Por Qu\u00e9 Trabajar Con Nosotros",
