@@ -17,7 +17,7 @@
   --secondary-foreground: oklch(0.18 0.08 247);
   --muted: oklch(0.96 0.005 247);
   --muted-foreground: oklch(0.50 0.03 247);
-  --accent: oklch(0.18 0.08 247);        /* Broncos navy #002244 */
+  --accent: oklch(0.26 0.12 247);        /* Broncos navy — lightened for visible dark blue */
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);

@@ -285,9 +285,9 @@ export const es: Dictionary = {
     },
     info: {
       phoneLabel: 'Tel\u00e9fono',
-      phoneValue: '[Tel\u00e9fono TBD]',
+      phoneValue: '303.952.1569',
       emailLabel: 'Correo Electr\u00f3nico',
-      emailValue: '[Correo TBD]',
+      emailValue: 'memrich@pivotlending.com',
       servingLabel: 'Atendiendo a',
       servingText: 'Compradores en todo Colorado',
     },

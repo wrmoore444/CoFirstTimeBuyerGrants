@@ -286,9 +286,9 @@ export const en = {
     },
     info: {
       phoneLabel: 'Phone',
-      phoneValue: '[Phone TBD]',
+      phoneValue: '303.952.1569',
       emailLabel: 'Email',
-      emailValue: '[Email TBD]',
+      emailValue: 'memrich@pivotlending.com',
       servingLabel: 'Serving',
       servingText: 'Buyers throughout Colorado',
     },

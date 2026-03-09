@@ -77,9 +77,9 @@ export function SiteHeader({ dict, lang }: Props) {
             >
               {nav.switchLang}
             </Link>
-            <a href="tel:TBD" className="flex items-center gap-1.5 text-sm font-medium text-primary">
+            <a href="tel:3039521569" className="flex items-center gap-1.5 text-sm font-medium text-primary">
               <Phone className="h-4 w-4" />
-              <span>[Phone TBD]</span>
+              <span>303.952.1569</span>
             </a>
             <Button asChild>
               <Link href={`/${lang}/contact`}>{nav.contact}</Link>
@@ -119,9 +119,9 @@ export function SiteHeader({ dict, lang }: Props) {
               >
                 {nav.switchLang === 'ES' ? 'Español' : 'English'}
               </Link>
-              <a href="tel:TBD" className="flex items-center gap-1.5 px-3 text-sm font-medium text-primary">
+              <a href="tel:3039521569" className="flex items-center gap-1.5 px-3 text-sm font-medium text-primary">
                 <Phone className="h-4 w-4" />
-                <span>[Phone TBD]</span>
+                <span>303.952.1569</span>
               </a>
               <Button asChild className="w-full">
                 <Link href={`/${lang}/contact`} onClick={() => setMobileOpen(false)}>

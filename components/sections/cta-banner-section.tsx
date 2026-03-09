@@ -16,7 +16,7 @@ interface Props {
 
 const bgMap: Record<Background, { section: string; title: string; subtitle: string }> = {
   primary: { section: 'bg-primary', title: 'text-primary-foreground', subtitle: 'text-primary-foreground/80' },
-  dark: { section: 'bg-foreground', title: 'text-background', subtitle: 'text-background/70' },
+  dark: { section: 'bg-accent', title: 'text-accent-foreground', subtitle: 'text-accent-foreground/80' },
   light: { section: 'bg-muted', title: 'text-foreground', subtitle: 'text-muted-foreground' },
 }
 

@@ -3,7 +3,7 @@ type Background = 'white' | 'light' | 'dark' | 'primary' | 'card'
 const bgMap: Record<Background, string> = {
   white: 'bg-background',
   light: 'bg-muted',
-  dark: 'bg-foreground',
+  dark: 'bg-accent',
   primary: 'bg-primary',
   card: 'bg-card',
 }
