@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     saveLead(lead).catch(err =>
       console.error('Lead file save failed:', err)
     )
-    sendLeadNotification(lead).catch(err =>
+    await sendLeadNotification(lead).catch(err =>
       console.error('Lead email notification failed:', err)
     )
     return NextResponse.json({ success: true })
