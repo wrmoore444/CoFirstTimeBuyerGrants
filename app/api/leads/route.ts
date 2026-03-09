@@ -33,7 +33,9 @@ export async function POST(req: NextRequest) {
       sourceType: body.sourceType ?? 'unknown',
       submittedAt: new Date().toISOString(),
     }
-    await saveLead(lead)
+    saveLead(lead).catch(err =>
+      console.error('Lead file save failed:', err)
+    )
     sendLeadNotification(lead).catch(err =>
       console.error('Lead email notification failed:', err)
     )
