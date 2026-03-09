@@ -49,7 +49,7 @@ export function SiteHeader({ dict, lang }: Props) {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-foreground border-b border-background/10">
+    <header className="sticky top-0 z-50 bg-accent border-b border-background/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href={`/${lang}`} className="flex items-center gap-2">
@@ -99,7 +99,7 @@ export function SiteHeader({ dict, lang }: Props) {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-background/10 bg-foreground md:hidden">
+        <div className="border-t border-background/10 bg-accent md:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile navigation">
             {NAV_ITEMS.map(({ key, href }) => (
               <Link
