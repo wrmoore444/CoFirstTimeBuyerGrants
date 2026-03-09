@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { saveLead } from '@/lib/leads'
+import { sendLeadNotification } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   let body: Record<string, string>
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await saveLead({
+    const lead = {
       name: `${firstName.trim()} ${lastName.trim()}`,
       email: email.trim(),
       phone: phone.trim(),
@@ -31,7 +32,11 @@ export async function POST(req: NextRequest) {
       sourcePath: body.sourcePath ?? '',
       sourceType: body.sourceType ?? 'unknown',
       submittedAt: new Date().toISOString(),
-    })
+    }
+    await saveLead(lead)
+    sendLeadNotification(lead).catch(err =>
+      console.error('Lead email notification failed:', err)
+    )
     return NextResponse.json({ success: true })
   } catch {
     return NextResponse.json({ error: 'Failed to save submission' }, { status: 500 })
