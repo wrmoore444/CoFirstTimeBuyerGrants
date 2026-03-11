@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/how-it-works', priority: 0.7 },
     { path: '/who-qualifies', priority: 0.7 },
     { path: '/about', priority: 0.6 },
+    { path: '/privacy-policy', priority: 0.3 },
+    { path: '/terms-conditions', priority: 0.3 },
   ]
 
   const staticEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
