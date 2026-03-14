@@ -170,13 +170,13 @@ export const en = {
         number: '2',
         title: 'Meet With Our Team',
         description:
-          "We\u2019ll review your situation and walk you through every grant option available to you, completely free of charge.",
+          "We’ll review your situation and walk you through every grant option and low down payment available to you, completely free of charge.",
       },
       {
         number: '3',
         title: 'Close on Your Home',
         description:
-          'Your grant funds are applied directly at closing. No repayment \u2014 ever. You walk away with keys and money still in your pocket.',
+          'Our commitment is to find the best financing options available to you. We put first time buyers into their homes for less than they’d put down on a new rental. We do this via a grant, a USDA loan, or a community second that covers the majority of downpayment and closing costs. We work with several state sponsored programs. Let’s find the best one for you.',
       },
     ],
     cta: {
