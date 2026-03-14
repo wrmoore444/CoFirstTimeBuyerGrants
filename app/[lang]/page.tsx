@@ -57,6 +57,17 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           </Button>
         </div>
 
+        {lang === 'en' && (
+          <div className="mt-4">
+            <Link
+              href="/es"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
+            >
+              ¿Prefiere español? Cambiar a Español →
+            </Link>
+          </div>
+        )}
+
         {/* Stats strip */}
         <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border-t border-primary-foreground/20 pt-8">
           {h.stats.map((stat, i) => (
