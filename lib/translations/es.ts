@@ -4,11 +4,11 @@ export const es: Dictionary = {
   nav: {
     home: 'Inicio',
     howItWorks: 'C\u00f3mo Funciona',
-    whoMayQualify: 'Qui\u00e9n Puede Calificar',
+    whoMayQualify: 'Quién Califica',
     counties: 'Condados',
     learn: 'Aprende',
     about: 'Nosotros',
-    faq: 'Preguntas',
+    faq: 'FAQ',
     contact: 'Contacto',
     switchLang: 'EN',
   },
