@@ -170,12 +170,12 @@ export const es: Dictionary = {
       {
         number: '2',
         title: 'Habla Con Nuestro Equipo',
-        description: 'Revisaremos tu situaci\u00f3n y te explicaremos todas las opciones de subvenci\u00f3n disponibles para ti, completamente gratis.',
+        description: 'Revisaremos tu situación y te explicaremos todas las opciones de subvención y pago inicial bajo disponibles para ti, completamente gratis.',
       },
       {
         number: '3',
         title: 'Cierra Tu Casa',
-        description: 'Los fondos de la subvenci\u00f3n se aplican directamente al cierre. Sin reembolso \u2014 nunca. Sales con las llaves y el dinero a\u00fan en tu bolsillo.',
+        description: 'Nuestro compromiso es encontrar las mejores opciones de financiamiento disponibles para ti. Ayudamos a los compradores de primera vez a entrar a sus hogares por menos de lo que pagarían de depósito en un nuevo alquiler. Lo hacemos a través de una subvención, un préstamo USDA, o un segundo comunitario que cubre la mayoría del pago inicial y los costos de cierre. Trabajamos con varios programas patrocinados por el estado. Encontremos el mejor para ti.',
       },
     ],
     cta: {
