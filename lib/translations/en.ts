@@ -164,7 +164,7 @@ export const en = {
         number: '1',
         title: 'Check Your Eligibility',
         description:
-          'Fill out our quick form \u2014 no obligation, no hard credit pull. We\u2019ll let you know right away what you may qualify for.',
+          'Fill out our quick form. A member from our Downpayment Assistance team will contact you and discuss the different assistance programs available in the state of Colorado. At that time should you find a suitable program, and want to work with our licensed representative, we will begin the process which would include a soft credit pull. At that time we will be able to issue you a prequalification that you can present to any licensed realtor in the state that you choose to work with.',
       },
       {
         number: '2',
@@ -176,7 +176,7 @@ export const en = {
         number: '3',
         title: 'Close on Your Home',
         description:
-          'Our commitment is to find the best financing options available to you. We put first time buyers into their homes for less than they’d put down on a new rental. We do this via a grant, a USDA loan, or a community second that covers the majority of downpayment and closing costs. We work with several state sponsored programs. Let’s find the best one for you.',
+          'Our commitment is to find the best financing options available to you. We put first time buyers into their homes for less than they’d put down on a new rental. We do this via a grant, a USDA loan, a VA loan, or a community second that covers the majority of downpayment and closing costs. We work with several state sponsored programs. Let’s find the best one for you.',
       },
     ],
     cta: {
