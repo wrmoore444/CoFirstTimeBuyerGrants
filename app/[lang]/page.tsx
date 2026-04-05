@@ -24,8 +24,86 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const dict = getDictionary(lang)
   const h = dict.home
 
+  const homepageSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://cofirsttimebuyergrants.com/#organization',
+        name: 'CoFirstTimeBuyerGrants',
+        url: 'https://cofirsttimebuyergrants.com',
+        description:
+          'CoFirstTimeBuyerGrants connects Colorado first-time home buyers with grant programs and down payment assistance — money that does not need to be repaid.',
+        areaServed: { '@type': 'State', name: 'Colorado', sameAs: 'https://www.wikidata.org/wiki/Q1261' },
+        serviceType: 'Homebuyer Assistance and Mortgage Lending',
+        inLanguage: ['en', 'es'],
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://cofirsttimebuyergrants.com/en/faq#faqpage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Are first-time homebuyer grants available in Colorado?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Programs designed to provide grant-style funding may be available to qualified buyers in Colorado. These programs are typically administered through state and local housing agencies and may help reduce the upfront cost of purchasing a home. Eligibility varies based on factors such as income, credit score, purchase price, and location.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How much down payment do you need to buy a home in Colorado?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'The required down payment depends on the loan type. Conventional loans typically require 3–20%, FHA loans require as little as 3.5%, and VA or USDA loans may require no down payment for qualified buyers. Down payment assistance programs may be available to help reduce the amount you need to bring to closing.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What credit score is needed to buy a home in Colorado?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Most conventional loans require a credit score of 620 or higher, while FHA loans may be available with scores as low as 580. Homebuyer assistance programs may have their own credit requirements, which can vary by program.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Who qualifies as a first-time homebuyer?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'For most homebuyer assistance programs, a first-time homebuyer is generally defined as someone who has not owned a primary residence in the past three years. This means that even if you previously owned a home, you may still qualify if sufficient time has passed.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can assistance programs help with closing costs?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Some homebuyer assistance programs help with closing costs in addition to or instead of down payment assistance. Closing costs typically range from 2–5% of the loan amount, and reducing these costs can make a meaningful difference for first-time buyers.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How do I find out if I qualify for homebuyer assistance?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'The best way to find out if you may qualify is to speak directly with a licensed Colorado mortgage professional who is familiar with available programs. Eligibility depends on multiple factors including income, credit, purchase price, and location. Complete the form on this page — a member of our team will review your situation at no cost and with no obligation.',
+            },
+          },
+        ],
+      },
+    ],
+  }
+
   return (
     <>
+      {lang === 'en' && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
+        />
+      )}
+
       {/* 1. HERO */}
       <HeroSection minHeight="min-h-[600px]">
         <span className="mb-4 inline-block rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground backdrop-blur-sm">

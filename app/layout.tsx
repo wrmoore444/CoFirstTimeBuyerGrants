@@ -12,10 +12,38 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cofirsttimebuyergrants.com'),
   title: 'CoFirstTimeBuyerGrants \u2014 Colorado Home Buying Assistance',
   description:
     'CoFirstTimeBuyerGrants connects Colorado first-time home buyers with grant programs that can provide thousands of dollars toward your purchase \u2014 money you never have to pay back.',
   generator: 'next',
+  alternates: {
+    canonical: '/en',
+  },
+  openGraph: {
+    title: 'CoFirstTimeBuyerGrants \u2014 Colorado Home Buying Assistance',
+    description:
+      'Connect with Colorado first-time homebuyer grant programs. Down payment and closing cost assistance \u2014 money you never have to pay back.',
+    url: 'https://cofirsttimebuyergrants.com/en',
+    siteName: 'CoFirstTimeBuyerGrants',
+    images: [
+      {
+        url: '/placeholder-logo.png',
+        width: 512,
+        height: 512,
+        alt: 'CoFirstTimeBuyerGrants \u2014 Colorado Home Buying Assistance',
+      },
+    ],
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CoFirstTimeBuyerGrants \u2014 Colorado Home Buying Assistance',
+    description:
+      'Connect with Colorado first-time homebuyer grant programs. Down payment and closing cost assistance \u2014 money you never have to pay back.',
+    images: ['/placeholder-logo.png'],
+  },
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
@@ -24,13 +52,17 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html>
+    <html lang="en">
       <body className="font-sans antialiased">
         {children}
         <Analytics />
