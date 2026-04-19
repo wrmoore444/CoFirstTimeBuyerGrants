@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next'
 import { COUNTIES } from '@/lib/counties'
-import { ARTICLES } from '@/lib/learn'
+import { getArticleSlugs } from '@/lib/learn'
 
 const BASE_URL = 'https://cofirsttimebuyergrants.com'
 const LANGS = ['en', 'es']
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const articleSlugs = await getArticleSlugs()
   const staticRoutes = [
     { path: '', priority: 1.0 },
     { path: '/counties', priority: 0.9 },
@@ -38,8 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   )
 
   const articleEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
-    ARTICLES.map((article) => ({
-      url: `${BASE_URL}/${lang}/learn/${article.slug}`,
+    articleSlugs.map((slug) => ({
+      url: `${BASE_URL}/${lang}/learn/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
