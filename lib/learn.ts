@@ -24,12 +24,11 @@ export interface Article {
   es: ArticleContent
 }
 
-const GCS_ARTICLES_URL = process.env.GCS_ARTICLES_URL ?? ''
-
 export async function getArticles(): Promise<Article[]> {
-  if (!GCS_ARTICLES_URL) return []
+  const url = process.env.GCS_ARTICLES_URL
+  if (!url) return []
   try {
-    const res = await fetch(GCS_ARTICLES_URL, { next: { revalidate: 60 } })
+    const res = await fetch(url, { next: { revalidate: 60 } })
     if (!res.ok) return []
     return (await res.json()) as Article[]
   } catch {
