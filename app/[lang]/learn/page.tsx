@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import { isValidLang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
-import { ARTICLES } from '@/lib/learn'
+import { getArticles } from '@/lib/learn'
 import type { Lang } from '@/lib/i18n'
 import { HeroSection } from '@/components/sections/hero-section'
 import { ContentSection } from '@/components/sections/content-section'
@@ -41,6 +41,7 @@ export default async function LearnIndexPage({
   if (!isValidLang(lang)) notFound()
   const dict = getDictionary(lang)
   const l = dict.learnIndex
+  const articles = await getArticles()
 
   return (
     <>
@@ -69,7 +70,7 @@ export default async function LearnIndexPage({
           <p className="mt-3 text-muted-foreground">{l.gridSubtitle}</p>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ARTICLES.map((article) => {
+          {articles.map((article) => {
             const content = article[lang as Lang]
             return (
               <Link

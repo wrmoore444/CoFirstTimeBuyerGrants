@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
-import { ARTICLES, getArticle } from '@/lib/learn'
+import { getArticle } from '@/lib/learn'
 import { HeroSection } from '@/components/sections/hero-section'
 import { ContentSection } from '@/components/sections/content-section'
 import { FaqPreviewSection } from '@/components/sections/faq-preview-section'
@@ -17,19 +17,13 @@ export async function generateMetadata({
   params: Promise<{ lang: string; slug: string }>
 }): Promise<Metadata> {
   const { lang, slug } = await params
-  const article = getArticle(slug)
+  const article = await getArticle(slug)
   if (!article || !isValidLang(lang)) return {}
   const content = article[lang as Lang]
   return {
     title: content.metaTitle,
     description: content.metaDescription,
   }
-}
-
-export function generateStaticParams() {
-  return ARTICLES.flatMap((article) =>
-    ['en', 'es'].map((lang) => ({ lang, slug: article.slug }))
-  )
 }
 
 export default async function ArticlePage({
@@ -40,7 +34,7 @@ export default async function ArticlePage({
   const { lang, slug } = await params
   if (!isValidLang(lang)) notFound()
 
-  const article = getArticle(slug)
+  const article = await getArticle(slug)
   if (!article) notFound()
 
   const dict = getDictionary(lang)
