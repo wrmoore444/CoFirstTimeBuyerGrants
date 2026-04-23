@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { isValidLang, buildAlternates, type Lang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
-import { getFAQItems } from '@/lib/faq'
+import { getFAQItems, FAQ_ITEMS } from '@/lib/faq'
 import { HeroSection } from '@/components/sections/hero-section'
 import { ContentSection } from '@/components/sections/content-section'
 import { FaqAccordion } from '@/components/sections/faq-accordion'
@@ -44,8 +44,23 @@ export default async function FaqPage({ params }: { params: Promise<{ lang: stri
   const h = dict.faq
   const faqItems = getFAQItems(lang as Lang)
 
+  const faqSchema = lang === 'en' ? {
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((f) => ({
+      '@type': 'Question',
+      name: f.en.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.en.answer },
+    })),
+  } : null
+
   return (
     <>
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {/* 1. HERO */}
       <HeroSection minHeight="min-h-[360px]">
         <span className="mb-4 inline-block rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground backdrop-blur-sm">
