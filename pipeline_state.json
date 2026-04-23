@@ -21,11 +21,11 @@
         "app/[lang]/counties/[county]/page.tsx"
       ],
       "required_tools": [],
-      "status": "VERIFIED",
+      "status": "CE_BLOCKED",
       "source": "planned",
       "define_path": "C:\\BillStuff2\\AIJoe\\Pivot\\defines\\step_01.md",
       "baseline_commit": "a9be1cc027f3c202193ce278858d96e7f196fb50",
-      "head_commit": null,
+      "head_commit": "60bb99a3389922e87dfbf96c13486e94a9a9be7c",
       "impl_log": "Done. Here's what was implemented:\n\n**`lib/i18n.ts`** \u00e2\u20ac\u201d added `buildAlternates(lang, path)` which returns `{ canonical, languages: { en, es, 'x-default' } }` all using the absolute base `https://cofirsttimebuyergrants.com`.\n\n**5 pages updated with `alternates`:**\n- `app/[lang]/page.tsx` \u00e2\u20ac\u201d new `generateMetadata` added (it had none), calls `buildAlternates(lang, '')`\n- `app/[lang]/faq/page.tsx` \u00e2\u20ac\u201d both ES/EN return branches get `alternates: buildAlternates(lang, '/faq')`\n- `app/[lang]/learn/page.tsx` \u00e2\u20ac\u201d same pattern with `/learn`\n- `app/[lang]/learn/[slug]/page.tsx` \u00e2\u20ac\u201d uses resolved `slug` param: `/learn/${slug}`\n- `app/[lang]/counties/[county]/page.tsx` \u00e2\u20ac\u201d uses resolved `countySlug` param: `/counties/${countySlug}`\n\nAll 12 existing tests pass, TypeScript is clean, committed as `18fb367`.",
       "verification_result": {
         "type": "none",
@@ -33,7 +33,84 @@
         "output": "No verification configured \u2014 PASS",
         "error": null
       },
-      "ce_review": null,
+      "ce_review": {
+        "repo_root": "C:\\BillStuff2\\AIJoe\\Pivot",
+        "baseline_reference": "a9be1cc027f3c202193ce278858d96e7f196fb50",
+        "head_reference": "60bb99a3389922e87dfbf96c13486e94a9a9be7c",
+        "change_request": "Step 1: Add buildAlternates helper and wire hreflang into all generateMetadata exports",
+        "acceptance_criteria": [
+          "`buildAlternates` is exported from `lib/i18n.ts` and returns `{ canonical",
+          "languages: { en",
+          "es",
+          "'x-default' } }`"
+        ],
+        "constraints": [],
+        "non_goals": [],
+        "invariants": [],
+        "implementation_notes": "",
+        "changed_files_claimed": [
+          "lib/i18n.ts",
+          "app/[lang]/page.tsx",
+          "app/[lang]/faq/page.tsx",
+          "app/[lang]/learn/page.tsx",
+          "app/[lang]/learn/[slug]/page.tsx",
+          "app/[lang]/counties/[county]/page.tsx"
+        ],
+        "changed_files_detected": [
+          "PIPELINE_BLOCKED.md",
+          "app/[lang]/counties/[county]/page.tsx",
+          "app/[lang]/faq/page.tsx",
+          "app/[lang]/learn/[slug]/page.tsx",
+          "app/[lang]/learn/page.tsx",
+          "app/[lang]/page.tsx",
+          "articles.json",
+          "ce-reviews/2026-03-08_commit_ff9a01f.json",
+          "ce-reviews/2026-04-18_commit_ae189b0.json",
+          "ce-reviews/2026-04-18_commit_bc803d2.json",
+          "defines/step_01.md",
+          "images/Marc2_cx840.png",
+          "images/Marc2_cx896.png",
+          "images/Marc2_cx950.png",
+          "images/MarcClaymation.png",
+          "images/MarcClaymation2.png",
+          "images/MarcClaymation_cx1300.png",
+          "images/MarcClaymation_cx1400.png",
+          "images/MarcClaymation_cx1500.png",
+          "images/MarcClaymation_portrait.png",
+          "images/backgroundMusic/Breeze de Palma.mp3",
+          "images/marcSquare.png",
+          "images/marc_test_audio.mp3",
+          "images/marc_test_short.mp4",
+          "images/marc_test_v2.mp4",
+          "images/marc_test_v3.mp4",
+          "images/marc_test_v4.mp4",
+          "images/me 21-2.JPG",
+          "images/me new.jpg",
+          "images/watermark.png",
+          "lib/i18n.ts",
+          "next-env.d.ts",
+          "pipeline_state.json",
+          "site-canon.md",
+          "tsconfig.tsbuildinfo"
+        ],
+        "diff_summary": {
+          "files_changed": 35,
+          "lines_added": 1782,
+          "lines_removed": 6
+        },
+        "mechanical_checks": {
+          "pass": false,
+          "violations": [
+            "Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'articles.json', 'ce-reviews/2026-03-08_commit_ff9a01f.json', 'ce-reviews/2026-04-18_commit_ae189b0.json', 'ce-reviews/2026-04-18_commit_bc803d2.json', 'defines/step_01.md', 'images/Marc2_cx840.png', 'images/Marc2_cx896.png', 'images/Marc2_cx950.png', 'images/MarcClaymation.png', 'images/MarcClaymation2.png', 'images/MarcClaymation_cx1300.png', 'images/MarcClaymation_cx1400.png', 'images/MarcClaymation_cx1500.png', 'images/MarcClaymation_portrait.png', 'images/backgroundMusic/Breeze de Palma.mp3', 'images/marcSquare.png', 'images/marc_test_audio.mp3', 'images/marc_test_short.mp4', 'images/marc_test_v2.mp4', 'images/marc_test_v3.mp4', 'images/marc_test_v4.mp4', 'images/me 21-2.JPG', 'images/me new.jpg', 'images/watermark.png', 'next-env.d.ts', 'pipeline_state.json', 'site-canon.md', 'tsconfig.tsbuildinfo']"
+          ]
+        },
+        "chief_engineer_review": {},
+        "human_confirmations": {},
+        "review_verdict": "BLOCKED",
+        "block_reasons": [
+          "Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'articles.json', 'ce-reviews/2026-03-08_commit_ff9a01f.json', 'ce-reviews/2026-04-18_commit_ae189b0.json', 'ce-reviews/2026-04-18_commit_bc803d2.json', 'defines/step_01.md', 'images/Marc2_cx840.png', 'images/Marc2_cx896.png', 'images/Marc2_cx950.png', 'images/MarcClaymation.png', 'images/MarcClaymation2.png', 'images/MarcClaymation_cx1300.png', 'images/MarcClaymation_cx1400.png', 'images/MarcClaymation_cx1500.png', 'images/MarcClaymation_portrait.png', 'images/backgroundMusic/Breeze de Palma.mp3', 'images/marcSquare.png', 'images/marc_test_audio.mp3', 'images/marc_test_short.mp4', 'images/marc_test_v2.mp4', 'images/marc_test_v3.mp4', 'images/marc_test_v4.mp4', 'images/me 21-2.JPG', 'images/me new.jpg', 'images/watermark.png', 'next-env.d.ts', 'pipeline_state.json', 'site-canon.md', 'tsconfig.tsbuildinfo']"
+        ]
+      },
       "retry_count": 0,
       "define_review_retries": 0
     }
