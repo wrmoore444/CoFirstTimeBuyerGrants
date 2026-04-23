@@ -1,0 +1,198 @@
+{
+  "repo_root": "C:\\BillStuff2\\AIJoe\\pivot",
+  "baseline_reference": "7c18e5d",
+  "head_reference": "ae189b0466ec31b101dd94b526d8143fb2c3ebe3",
+  "change_request": "Replace static lib/learn.ts article data with a dynamically fetched JSON file from Google Cloud Storage so new articles can be published without redeploying",
+  "acceptance_criteria": [
+    "Migration script exists at scripts/export-articles.py",
+    "learn index page fetches articles from GCS at request time with revalidate 60s",
+    "learn slug page fetches article by slug from GCS with revalidate 60s",
+    "generateStaticParams removed from slug page",
+    "GCS fetch failure returns empty list or notFound without crashing",
+    "GCS_ARTICLES_URL read from environment variable",
+    "lib/learn.ts retains only interfaces and fetch functions with no data arrays"
+  ],
+  "constraints": [],
+  "non_goals": [],
+  "invariants": [],
+  "implementation_notes": "",
+  "changed_files_claimed": [
+    "lib/learn.ts",
+    "app/[lang]/learn/page.tsx",
+    "app/[lang]/learn/[slug]/page.tsx",
+    "scripts/export-articles.py",
+    ".env.example"
+  ],
+  "changed_files_detected": [
+    ".env.example",
+    "app/[lang]/learn/[slug]/page.tsx",
+    "app/[lang]/learn/page.tsx",
+    "lib/learn.ts",
+    "scripts/export-articles.py"
+  ],
+  "diff_summary": {
+    "files_changed": 5,
+    "lines_added": 492,
+    "lines_removed": 462
+  },
+  "mechanical_checks": {
+    "pass": true,
+    "violations": []
+  },
+  "chief_engineer_review": {
+    "scope": {
+      "change_request": "Replace static lib/learn.ts article data with a dynamically fetched JSON file from Google Cloud Storage so new articles can be published without redeploying",
+      "acceptance_criteria": [
+        "Migration script exists at scripts/export-articles.py",
+        "learn index page fetches articles from GCS at request time with revalidate 60s",
+        "learn slug page fetches article by slug from GCS with revalidate 60s",
+        "generateStaticParams removed from slug page",
+        "GCS fetch failure returns empty list or notFound without crashing",
+        "GCS_ARTICLES_URL read from environment variable",
+        "lib/learn.ts retains only interfaces and fetch functions with no data arrays"
+      ],
+      "files_claimed": [
+        "lib/learn.ts",
+        "app/[lang]/learn/page.tsx",
+        "app/[lang]/learn/[slug]/page.tsx",
+        "scripts/export-articles.py",
+        ".env.example"
+      ],
+      "files_detected": [
+        ".env.example",
+        "app/[lang]/learn/[slug]/page.tsx",
+        "app/[lang]/learn/page.tsx",
+        "lib/learn.ts",
+        "scripts/export-articles.py"
+      ],
+      "file_summaries": [
+        ".env.example: +2/-0 lines",
+        "app/[lang]/learn/[slug]/page.tsx: +3/-9 lines (functions: generateStaticParams)",
+        "app/[lang]/learn/page.tsx: +3/-2 lines",
+        "lib/learn.ts: +18/-451 lines (functions: getArticles, getArticle, getArticleSlugs)",
+        "scripts/export-articles.py: +466/-0 lines"
+      ],
+      "llm_analysis": {
+        "matches_intent": true,
+        "assessment": "The changes successfully replace static article data with dynamically fetched data from GCS. The migration script, GCS fetch implementation, and environment variable usage align with the change request.",
+        "concerns": []
+      }
+    },
+    "regression": {
+      "files_analyzed": [
+        ".env.example",
+        "app/[lang]/learn/[slug]/page.tsx",
+        "app/[lang]/learn/page.tsx",
+        "lib/learn.ts",
+        "scripts/export-articles.py"
+      ],
+      "functions_touched": [
+        "app/[lang]/learn/[slug]/page.tsx::generateStaticParams",
+        "lib/learn.ts::getArticles",
+        "lib/learn.ts::getArticle",
+        "lib/learn.ts::getArticleSlugs"
+      ],
+      "llm_analysis": {
+        "risks": [
+          "Network errors during GCS fetch could lead to unexpected behavior in app/[lang]/learn/page.tsx:LearnIndexPage.",
+          "Incorrectly formatted JSON in GCS could cause parsing errors in lib/learn.ts:getArticles or lib/learn.ts:getArticle.",
+          "Changes to the GCS URL or object structure without corresponding code updates could break the application in lib/learn.ts."
+        ],
+        "severity": "medium"
+      }
+    },
+    "edge_cases": {
+      "llm_analysis": {
+        "empty_input": "handled",
+        "null_input": "handled",
+        "missing_input": "handled",
+        "error_handling": "adequate",
+        "notes": "GCS fetch failures are handled by returning an empty list or notFound, preventing crashes."
+      }
+    },
+    "contracts": {
+      "detected_files": [
+        ".env.example",
+        "app/[lang]/learn/[slug]/page.tsx",
+        "app/[lang]/learn/page.tsx",
+        "lib/learn.ts",
+        "scripts/export-articles.py"
+      ],
+      "llm_analysis": {
+        "has_breaking_changes": true,
+        "affected_apis": [
+          "lib/learn.ts:getArticles",
+          "lib/learn.ts:getArticle"
+        ],
+        "migration_needed": false,
+        "notes": "The API for fetching articles changes from a static import to an asynchronous fetch. No migration is needed as the return type (Article) remains the same."
+      }
+    },
+    "tests": {
+      "llm_analysis": {
+        "test_coverage": "inadequate",
+        "test_files_changed": [],
+        "recommendation": "Tests are needed to verify GCS fetch success and failure scenarios, as well as data integrity. Add integration tests to cover the new GCS fetching logic."
+      }
+    },
+    "rollback": {
+      "baseline": "7c18e5d",
+      "head": "ae189b0466ec31b101dd94b526d8143fb2c3ebe3",
+      "files_affected": [
+        ".env.example",
+        "app/[lang]/learn/[slug]/page.tsx",
+        "app/[lang]/learn/page.tsx",
+        "lib/learn.ts",
+        "scripts/export-articles.py"
+      ],
+      "rollback_command": "git revert ae189b04",
+      "rollback_steps": [
+        "1. Run: git revert ae189b04",
+        "2. Resolve any merge conflicts if prompted",
+        "3. Commit the revert",
+        "4. Verify application still works",
+        "5. Deploy reverted code"
+      ],
+      "additional_cleanup": "Review affected files for any required data/config cleanup"
+    },
+    "overall": {
+      "recommendation": "block",
+      "summary": "The changes implement the requested functionality, but lack sufficient testing. Integration tests are needed to ensure the GCS fetch is reliable and handles errors gracefully.",
+      "key_concerns": [
+        "Missing integration tests for GCS fetch."
+      ]
+    },
+    "model_used": "gemini-2.0-flash"
+  },
+  "human_confirmations": {
+    "scope": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "regression": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "edge_cases": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "contracts": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "tests": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "rollback": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    }
+  },
+  "review_verdict": "BLOCKED",
+  "block_reasons": [
+    "CE recommendation: BLOCK - The changes implement the requested functionality, but lack sufficient testing. Integration tests are needed to ensure the GCS fetch is reliable and handles errors gracefully.",
+    "Missing integration tests for GCS fetch."
+  ]
+}
