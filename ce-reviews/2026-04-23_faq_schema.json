@@ -1,0 +1,180 @@
+{
+  "repo_root": "C:\\BillStuff2\\AIJoe\\pivot",
+  "baseline_reference": "b05a655",
+  "head_reference": "121789dcfc56f890b901a5e4280f10851bdb2cc9",
+  "change_request": "Add FAQPage JSON-LD schema to /en/faq page via buildFaqPageSchema exported from lib/faq.ts, with unit tests",
+  "acceptance_criteria": [
+    "buildFaqPageSchema exported from lib/faq.ts returns null for non-English and FAQPage schema for English",
+    "schema mainEntity has 7 Question entries each with acceptedAnswer",
+    "schema content matches getFAQItems en output",
+    "faq page component uses buildFaqPageSchema and renders script block only for English",
+    "19 tests pass"
+  ],
+  "constraints": [],
+  "non_goals": [],
+  "invariants": [],
+  "implementation_notes": "",
+  "changed_files_claimed": [
+    "lib/faq.ts",
+    "lib/faq.test.ts",
+    "app/[lang]/faq/page.tsx"
+  ],
+  "changed_files_detected": [
+    "app/[lang]/faq/page.tsx",
+    "lib/faq.test.ts",
+    "lib/faq.ts"
+  ],
+  "diff_summary": {
+    "files_changed": 3,
+    "lines_added": 80,
+    "lines_removed": 1
+  },
+  "mechanical_checks": {
+    "pass": true,
+    "violations": []
+  },
+  "chief_engineer_review": {
+    "scope": {
+      "change_request": "Add FAQPage JSON-LD schema to /en/faq page via buildFaqPageSchema exported from lib/faq.ts, with unit tests",
+      "acceptance_criteria": [
+        "buildFaqPageSchema exported from lib/faq.ts returns null for non-English and FAQPage schema for English",
+        "schema mainEntity has 7 Question entries each with acceptedAnswer",
+        "schema content matches getFAQItems en output",
+        "faq page component uses buildFaqPageSchema and renders script block only for English",
+        "19 tests pass"
+      ],
+      "files_claimed": [
+        "lib/faq.ts",
+        "lib/faq.test.ts",
+        "app/[lang]/faq/page.tsx"
+      ],
+      "files_detected": [
+        "app/[lang]/faq/page.tsx",
+        "lib/faq.test.ts",
+        "lib/faq.ts"
+      ],
+      "file_summaries": [
+        "app/[lang]/faq/page.tsx: +9/-1 lines",
+        "lib/faq.test.ts: +59/-0 lines",
+        "lib/faq.ts: +12/-0 lines (functions: buildFaqPageSchema)"
+      ],
+      "llm_analysis": {
+        "matches_intent": true,
+        "assessment": "The change aligns with the request: it adds FAQPage JSON-LD generation in lib/faq.ts, wires it into the /[lang]/faq page, and adds unit tests covering English-only behavior and schema content.",
+        "concerns": [
+          "The page now emits a raw <script> tag via dangerouslySetInnerHTML without explicit escaping or a helper component, which is acceptable for JSON-LD but should be reviewed for serialization safety.",
+          "The implementation relies on buildFaqPageSchema(lang) returning null for non-English, but the page still calls it for all languages rather than gating earlier; this is fine functionally but worth noting."
+        ]
+      }
+    },
+    "regression": {
+      "files_analyzed": [
+        "app/[lang]/faq/page.tsx",
+        "lib/faq.test.ts",
+        "lib/faq.ts"
+      ],
+      "functions_touched": [
+        "lib/faq.ts::buildFaqPageSchema"
+      ],
+      "llm_analysis": {
+        "risks": [
+          "app/[lang]/faq/page.tsx:FaqPage may render invalid or duplicated structured data if the page is ever server-rendered alongside another FAQ JSON-LD source.",
+          "lib/faq.ts:buildFaqPageSchema uses a broad string input and only checks for 'en'; unexpected locale formats like 'en-US' will return null and suppress schema unexpectedly.",
+          "app/[lang]/faq/page.tsx: the script block is inserted before the visible content, which could affect ordering assumptions in tests or downstream DOM consumers.",
+          "lib/faq.test.ts: tests validate current FAQ_ITEMS shape but do not assert that the schema is JSON-serializable or that the script output is present only on the English page component."
+        ],
+        "severity": "low"
+      }
+    },
+    "edge_cases": {
+      "llm_analysis": {
+        "empty_input": "not_applicable",
+        "null_input": "not_handled",
+        "missing_input": "not_handled",
+        "error_handling": "not_applicable",
+        "notes": "The schema builder accepts a string locale and only handles the exact 'en' case. There is no explicit handling for null/undefined/malformed locale values, though the current call site passes a validated lang value."
+      }
+    },
+    "contracts": {
+      "detected_files": [
+        "app/[lang]/faq/page.tsx",
+        "lib/faq.test.ts",
+        "lib/faq.ts"
+      ],
+      "llm_analysis": {
+        "has_breaking_changes": false,
+        "affected_apis": [
+          "lib/faq.ts: buildFaqPageSchema(lang: string): object | null",
+          "app/[lang]/faq/page.tsx: FAQ page server component output now includes application/ld+json script for English",
+          "JSON-LD FAQPage schema shape: @type=FAQPage with mainEntity Question/Answer entries"
+        ],
+        "migration_needed": false,
+        "notes": "This is an additive change to page output and a new exported helper. No existing public API appears to be removed or renamed."
+      }
+    },
+    "tests": {
+      "llm_analysis": {
+        "test_coverage": "adequate",
+        "test_files_changed": [
+          "lib/faq.test.ts"
+        ],
+        "recommendation": "Run the full test suite and verify the rendered /en/faq HTML contains exactly one FAQPage JSON-LD script and that non-English pages do not emit it."
+      }
+    },
+    "rollback": {
+      "baseline": "b05a655",
+      "head": "121789dcfc56f890b901a5e4280f10851bdb2cc9",
+      "files_affected": [
+        "app/[lang]/faq/page.tsx",
+        "lib/faq.test.ts",
+        "lib/faq.ts"
+      ],
+      "rollback_command": "git revert 121789dc",
+      "rollback_steps": [
+        "1. Run: git revert 121789dc",
+        "2. Resolve any merge conflicts if prompted",
+        "3. Commit the revert",
+        "4. Verify application still works",
+        "5. Deploy reverted code"
+      ],
+      "additional_cleanup": "None required for code-only changes"
+    },
+    "overall": {
+      "recommendation": "approve",
+      "summary": "The implementation satisfies the requested behavior and the tests cover the key acceptance criteria: English-only schema generation, seven FAQ entries, and content parity with getFAQItems('en'). The page integration is straightforward and low risk, with only minor concerns around locale exact-match behavior and JSON-LD script serialization.",
+      "key_concerns": [
+        "Exact locale matching may suppress schema for locale variants like en-US if those ever reach this helper.",
+        "No explicit test asserts the page component renders the script only for English, though the helper tests make that behavior likely."
+      ]
+    },
+    "model_used": "gpt-5.4-mini"
+  },
+  "human_confirmations": {
+    "scope": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "regression": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "edge_cases": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "contracts": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "tests": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    },
+    "rollback": {
+      "confirmed": true,
+      "note": "Auto-confirmed (skip mode)"
+    }
+  },
+  "review_verdict": "APPROVED",
+  "block_reasons": []
+}
