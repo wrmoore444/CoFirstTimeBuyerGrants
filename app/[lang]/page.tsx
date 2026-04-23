@@ -1,7 +1,8 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { notFound } from 'next/navigation'
-import { isValidLang } from '@/lib/i18n'
+import { isValidLang, buildAlternates } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
 import { Button } from '@/components/ui/button'
 import { HeroSection } from '@/components/sections/hero-section'
@@ -13,6 +14,16 @@ import { CountyPreviewSection } from '@/components/sections/county-preview-secti
 import { FaqPreviewSection } from '@/components/sections/faq-preview-section'
 import { CtaBannerSection } from '@/components/sections/cta-banner-section'
 import { ContactForm } from '@/components/layout/contact-form'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  if (!isValidLang(lang)) return {}
+  return { alternates: buildAlternates(lang, '') }
+}
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }]

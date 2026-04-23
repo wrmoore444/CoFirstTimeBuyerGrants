@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { notFound } from 'next/navigation'
-import { isValidLang } from '@/lib/i18n'
+import { isValidLang, buildAlternates } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
 import { getArticles } from '@/lib/learn'
 import type { Lang } from '@/lib/i18n'
@@ -20,11 +20,13 @@ export async function generateMetadata({
     return {
       title: 'Centro de Conocimiento | CoFirstTimeBuyerGrants',
       description: 'Explora artículos educativos sobre programas de asistencia para compradores de casa por primera vez en Colorado.',
+      alternates: buildAlternates(lang, '/learn'),
     }
   }
   return {
     title: 'Learn About Colorado First-Time Homebuyer Programs | CoFirstTimeBuyerGrants',
     description: 'Explore educational articles about Colorado first-time homebuyer assistance programs, down payment help, credit score requirements, and more.',
+    alternates: buildAlternates(lang, '/learn'),
   }
 }
 

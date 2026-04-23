@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { isValidLang, type Lang } from '@/lib/i18n'
+import { isValidLang, buildAlternates, type Lang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
 import { getArticle } from '@/lib/learn'
 import { HeroSection } from '@/components/sections/hero-section'
@@ -23,6 +23,7 @@ export async function generateMetadata({
   return {
     title: content.metaTitle,
     description: content.metaDescription,
+    alternates: buildAlternates(lang, '/learn/' + slug),
   }
 }
 

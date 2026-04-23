@@ -14,3 +14,16 @@ export function buildAlternatePath(pathname: string, targetLang: Lang): string {
   segments[1] = targetLang
   return segments.join('/') || `/${targetLang}`
 }
+
+const BASE = 'https://cofirsttimebuyergrants.com'
+
+export function buildAlternates(lang: string, path: string) {
+  return {
+    canonical: `${BASE}/${lang}${path}`,
+    languages: {
+      en: `${BASE}/en${path}`,
+      es: `${BASE}/es${path}`,
+      'x-default': `${BASE}/en${path}`,
+    },
+  }
+}

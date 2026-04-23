@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { isValidLang, type Lang } from '@/lib/i18n'
+import { isValidLang, buildAlternates, type Lang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
 import { COUNTIES, getCounty } from '@/lib/counties'
 import { HeroSection } from '@/components/sections/hero-section'
@@ -26,11 +26,13 @@ export async function generateMetadata({
     return {
       title: `${content.name} - Subsidios para Compradores de Casa | Programas de Asistencia en Colorado`,
       description: `Explora los subsidios y programas de asistencia para compradores de casa por primera vez que pueden estar disponibles para compradores calificados en ${content.name}. Aprende cómo los programas de asistencia pueden ayudar a reducir los costos iniciales de compra.`,
+      alternates: buildAlternates(lang, '/counties/' + countySlug),
     }
   }
   return {
     title: `${content.name} First Time Home Buyer Grants | Colorado Assistance Programs`,
     description: `Explore first-time homebuyer grants and assistance programs that may be available to qualified buyers in ${content.name}. Learn how assistance programs can help reduce upfront home purchase costs.`,
+    alternates: buildAlternates(lang, '/counties/' + countySlug),
   }
 }
 

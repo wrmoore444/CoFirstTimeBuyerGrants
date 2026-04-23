@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isValidLang, type Lang } from '@/lib/i18n'
+import { isValidLang, buildAlternates, type Lang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
 import { getFAQItems } from '@/lib/faq'
 import { HeroSection } from '@/components/sections/hero-section'
@@ -21,12 +21,14 @@ export async function generateMetadata({
       title: 'Preguntas Frecuentes — Asistencia Para Compradores de Casa en Colorado',
       description:
         'Respuestas a preguntas comunes sobre subsidios, pago inicial, puntaje de crédito y programas de asistencia para compradores de casa por primera vez en Colorado.',
+      alternates: buildAlternates(lang, '/faq'),
     }
   }
   return {
     title: 'FAQ — Colorado First Time Home Buyer Grants and Assistance Programs',
     description:
       'Answers to common questions about first-time homebuyer grants, down payment assistance, credit score requirements, and closing cost help in Colorado.',
+    alternates: buildAlternates(lang, '/faq'),
   }
 }
 
