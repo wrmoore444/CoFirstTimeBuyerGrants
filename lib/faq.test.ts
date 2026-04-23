@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { FAQ_ITEMS, getFAQItems } from './faq'
+import { FAQ_ITEMS, getFAQItems, buildFaqPageSchema } from './faq'
 
 describe('FAQ_ITEMS', () => {
   it('contains exactly 7 items', () => {
@@ -16,18 +16,27 @@ describe('FAQ_ITEMS', () => {
   })
 })
 
-describe('FAQPage schema construction', () => {
-  it('builds schema with 7 Question entries for English', () => {
-    const schema = {
-      '@type': 'FAQPage',
-      mainEntity: FAQ_ITEMS.map((f) => ({
-        '@type': 'Question',
-        name: f.en.question,
-        acceptedAnswer: { '@type': 'Answer', text: f.en.answer },
-      })),
-    }
+describe('buildFaqPageSchema', () => {
+  it('returns null for non-English locales', () => {
+    expect(buildFaqPageSchema('es')).toBeNull()
+    expect(buildFaqPageSchema('fr')).toBeNull()
+  })
+
+  it('returns a FAQPage schema for English', () => {
+    const schema = buildFaqPageSchema('en') as Record<string, unknown>
+    expect(schema).not.toBeNull()
     expect(schema['@type']).toBe('FAQPage')
+  })
+
+  it('mainEntity contains exactly 7 Question entries', () => {
+    const schema = buildFaqPageSchema('en') as { mainEntity: unknown[] }
     expect(schema.mainEntity).toHaveLength(7)
+  })
+
+  it('each Question entry has correct structure', () => {
+    const schema = buildFaqPageSchema('en') as {
+      mainEntity: Array<{ '@type': string; name: string; acceptedAnswer: { '@type': string; text: string } }>
+    }
     for (const entry of schema.mainEntity) {
       expect(entry['@type']).toBe('Question')
       expect(entry.name).toBeTruthy()
@@ -36,19 +45,15 @@ describe('FAQPage schema construction', () => {
     }
   })
 
-  it('schema content matches visible FAQ content for English', () => {
-    const visibleItems = getFAQItems('en')
-    const schemaItems = FAQ_ITEMS.map((f) => ({ name: f.en.question, text: f.en.answer }))
-    expect(schemaItems).toHaveLength(visibleItems.length)
-    for (let i = 0; i < visibleItems.length; i++) {
-      expect(schemaItems[i].name).toBe(visibleItems[i].question)
-      expect(schemaItems[i].text).toBe(visibleItems[i].answer)
+  it('schema Question names match visible English FAQ content', () => {
+    const schema = buildFaqPageSchema('en') as {
+      mainEntity: Array<{ name: string; acceptedAnswer: { text: string } }>
     }
-  })
-
-  it('schema is suppressed for non-English locales', () => {
-    const schema = (lang: string) => lang === 'en' ? { '@type': 'FAQPage' } : null
-    expect(schema('en')).not.toBeNull()
-    expect(schema('es')).toBeNull()
+    const visibleItems = getFAQItems('en')
+    expect(schema.mainEntity).toHaveLength(visibleItems.length)
+    for (let i = 0; i < visibleItems.length; i++) {
+      expect(schema.mainEntity[i].name).toBe(visibleItems[i].question)
+      expect(schema.mainEntity[i].acceptedAnswer.text).toBe(visibleItems[i].answer)
+    }
   })
 })

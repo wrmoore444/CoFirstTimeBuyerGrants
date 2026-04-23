@@ -106,3 +106,15 @@ export const FAQ_ITEMS: BilingualFAQ[] = [
 export function getFAQItems(lang: 'en' | 'es'): FAQItem[] {
   return FAQ_ITEMS.map((f) => f[lang])
 }
+
+export function buildFaqPageSchema(lang: string): object | null {
+  if (lang !== 'en') return null
+  return {
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((f) => ({
+      '@type': 'Question',
+      name: f.en.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.en.answer },
+    })),
+  }
+}
