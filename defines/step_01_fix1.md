@@ -1,40 +1,49 @@
-# DEFINE: Step 1 — Fix: Add buildAlternates helper and wire hreflang into all generateMetadata exports (attempt 1)
+# DEFINE: Step 1 — Fix: Add Buzzsprout embedded audio player to Learn article pages (attempt 1)
 
 ## 1. Change Request
-Fix: Add buildAlternates helper and wire hreflang into all generateMetadata exports (attempt 1)
+Fix: Add Buzzsprout embedded audio player to Learn article pages (attempt 1)
 
 ## 2. Objective
 Fix block reasons:
-- Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'articles.json', 'ce-reviews/2026-03-08_commit_ff9a01f.json', 'ce-reviews/2026-04-18_commit_ae189b0.json', 'ce-reviews/2026-04-18_commit_bc803d2.json', 'defines/step_01.md', 'images/Marc2_cx840.png', 'images/Marc2_cx896.png', 'images/Marc2_cx950.png', 'images/MarcClaymation.png', 'images/MarcClaymation2.png', 'images/MarcClaymation_cx1300.png', 'images/MarcClaymation_cx1400.png', 'images/MarcClaymation_cx1500.png', 'images/MarcClaymation_portrait.png', 'images/backgroundMusic/Breeze de Palma.mp3', 'images/marcSquare.png', 'images/marc_test_audio.mp3', 'images/marc_test_short.mp4', 'images/marc_test_v2.mp4', 'images/marc_test_v3.mp4', 'images/marc_test_v4.mp4', 'images/me 21-2.JPG', 'images/me new.jpg', 'images/watermark.png', 'next-env.d.ts', 'pipeline_state.json', 'site-canon.md', 'tsconfig.tsbuildinfo']
+- Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'defines/step_01.md', 'pipeline_state.json']
 
 Original:
-Add a `buildAlternates(lang, path)` function to `lib/i18n.ts` that returns a Next.js `alternates` metadata object with canonical, and language alternates for `en`, `es`, and `x-default`. Then add the `alternates` property to the `generateMetadata` export in each of the five pages that currently have one: the homepage, the FAQ page, the Learn index, the article detail page, and the county detail page.
+Add an optional `buzzsproutEmbedUrl` field to the Article interface and render an embedded Buzzsprout audio player on Learn article pages when the field is present.
+
+The change must:
+- Add `buzzsproutEmbedUrl?: string` to the `Article` interface in `lib/learn.ts`
+- Create a new server component `components/sections/buzzsprout-player.tsx` that renders a Buzzsprout iframe. The iframe uses the `buzzsproutEmbedUrl` as `src`, width 100%, height 200px, no border, no scrolling
+- The component accepts `url: string` and `lang: string` props
+- The component renders a heading: "Listen to the Episode" when `lang === 'en'`, "Escucha el Episodio" when `lang === 'es'`
+- The component is wrapped in a `ContentSection` with `background="light"`
+- In `app/[lang]/learn/[slug]/page.tsx`, render `BuzzsproutPlayer` between the hero section and the first content section only when `article.buzzsproutEmbedUrl` is present and non-empty
+- Articles without `buzzsproutEmbedUrl` render identically to before — no layout change
+- Do NOT modify any translation dictionary files
+- Update `tests/learn.test.ts` to add a test verifying that `buzzsproutEmbedUrl` is present and passed through when included in mock article data
 
 Rough acceptance criteria:
-- `buildAlternates` is exported from `lib/i18n.ts` and returns `{ canonical, languages: { en, es, 'x-default' } }`
-- All URLs constructed by `buildAlternates` use the absolute base `https://cofirsttimebuyergrants.com`
-- `x-default` always points to the English URL
-- `app/[lang]/page.tsx` generateMetadata includes `alternates` using path `''`
-- `app/[lang]/faq/page.tsx` generateMetadata includes `alternates` using path `/faq`
-- `app/[lang]/learn/page.tsx` generateMetadata includes `alternates` using path `/learn`
-- `app/[lang]/learn/[slug]/page.tsx` generateMetadata includes `alternates` using the resolved slug value
-- `app/[lang]/counties/[county]/page.tsx` generateMetadata includes `alternates` using the resolved county slug value
-- No existing title, description, or JSON-LD values are changed
-- No files outside the claimed list are modified
+- `Article` interface in `lib/learn.ts` has `buzzsproutEmbedUrl?: string`
+- `BuzzsproutPlayer` component exists at `components/sections/buzzsprout-player.tsx`
+- Article page renders the player between hero and first content section when `buzzsproutEmbedUrl` is set
+- Article page renders no player when `buzzsproutEmbedUrl` is absent
+- Player shows correct heading for `en` and `es` lang
+- iframe `src` equals the `buzzsproutEmbedUrl` value verbatim
+- `pnpm run test` passes including the new test in `tests/learn.test.ts`
+- No translation dictionary files are modified
 
-Estimated files: lib/i18n.ts, app/[lang]/page.tsx, app/[lang]/faq/page.tsx, app/[lang]/learn/page.tsx, app/[lang]/learn/[slug]/page.tsx, app/[lang]/counties/[county]/page.tsx
+Estimated files: lib/learn.ts, app/[lang]/learn/[slug]/page.tsx, components/sections/buzzsprout-player.tsx (new), tests/learn.test.ts
 
 ## 3. Background
-Part of automated pipeline for CoFirstTimeBuyerGrants — Hreflang Alternates.
+Part of automated pipeline for CoFirstTimeBuyerGrants.
 
 ## 4. Implementation Instructions
 Implement as described in the outline above.
 
 ## 5. Acceptance Criteria
-- `buildAlternates` is exported from `lib/i18n.ts` and returns `{ canonical, languages: { en, es, 'x-default' } }`
+- `Article` interface in `lib/learn.ts` has `buzzsproutEmbedUrl?: string`
 
 ## 6. Expected File Scope
-lib/i18n.ts, app/[lang]/page.tsx, app/[lang]/faq/page.tsx, app/[lang]/learn/page.tsx, app/[lang]/learn/[slug]/page.tsx, app/[lang]/counties/[county]/page.tsx
+lib/learn.ts, app/[lang]/learn/[slug]/page.tsx, components/sections/buzzsprout-player.tsx (new), tests/learn.test.ts
 
 ## 7. Constraints
 Follow all engineering rules in ENGINEERING_RULES.md.

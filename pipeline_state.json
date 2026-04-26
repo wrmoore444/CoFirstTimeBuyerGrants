@@ -19,11 +19,11 @@
         "tests/learn.test.ts"
       ],
       "required_tools": [],
-      "status": "VERIFIED",
+      "status": "CE_BLOCKED",
       "source": "planned",
       "define_path": "C:\\BillStuff2\\AIJoe\\Pivot\\defines\\step_01.md",
       "baseline_commit": "8da3acf32616bcacb19506abb70dd39275650326",
-      "head_commit": null,
+      "head_commit": "505b997674dd01e73742b266718b109890c4350e",
       "impl_log": "Done. Here's a summary of what was implemented:\n\n- **`lib/learn.ts`** \u00e2\u20ac\u201d Added `buzzsproutEmbedUrl?: string` to the `Article` interface.\n- **`components/sections/buzzsprout-player.tsx`** \u00e2\u20ac\u201d New component that renders the section heading (\"Listen to the Episode\" / \"Escucha el Episodio\" based on `lang`) and an `<iframe>` with `width=\"100%\"`, `height={200}`, `frameBorder={0}`, `scrolling=\"no\"`.\n- **`app/[lang]/learn/[slug]/page.tsx`** \u00e2\u20ac\u201d Conditionally renders `<BuzzsproutPlayer>` when `article.buzzsproutEmbedUrl` is non-empty.\n- **`tests/learn.test.ts`** \u00e2\u20ac\u201d Added a test asserting `buzzsproutEmbedUrl` round-trips through `getArticle` when present in mock data.\n\nAll 20 tests pass (2 test files).",
       "verification_result": {
         "type": "unit_tests",
@@ -31,7 +31,51 @@
         "output": "\n> cofirsttimebuyergrants@0.1.0 test C:\\BillStuff2\\AIJoe\\Pivot\n> vitest run\n\n\n RUN  v4.1.4 C:/BillStuff2/AIJoe/Pivot\n\n\n Test Files  2 passed (2)\n      Tests  20 passed (20)\n   Start at  22:13:29\n   Duration  205ms (transform 72ms, setup 0ms, import 100ms, tests 15ms, environment 0ms)\n\n",
         "error": null
       },
-      "ce_review": null,
+      "ce_review": {
+        "repo_root": "C:\\BillStuff2\\AIJoe\\Pivot",
+        "baseline_reference": "8da3acf32616bcacb19506abb70dd39275650326",
+        "head_reference": "505b997674dd01e73742b266718b109890c4350e",
+        "change_request": "Step 1: Add Buzzsprout embedded audio player to Learn article pages",
+        "acceptance_criteria": [
+          "`Article` interface in `lib/learn.ts` has `buzzsproutEmbedUrl?: string`"
+        ],
+        "constraints": [],
+        "non_goals": [],
+        "invariants": [],
+        "implementation_notes": "",
+        "changed_files_claimed": [
+          "lib/learn.ts",
+          "app/[lang]/learn/[slug]/page.tsx",
+          "components/sections/buzzsprout-player.tsx",
+          "tests/learn.test.ts"
+        ],
+        "changed_files_detected": [
+          "PIPELINE_BLOCKED.md",
+          "app/[lang]/learn/[slug]/page.tsx",
+          "components/sections/buzzsprout-player.tsx",
+          "defines/step_01.md",
+          "lib/learn.ts",
+          "pipeline_state.json",
+          "tests/learn.test.ts"
+        ],
+        "diff_summary": {
+          "files_changed": 7,
+          "lines_added": 131,
+          "lines_removed": 189
+        },
+        "mechanical_checks": {
+          "pass": false,
+          "violations": [
+            "Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'defines/step_01.md', 'pipeline_state.json']"
+          ]
+        },
+        "chief_engineer_review": {},
+        "human_confirmations": {},
+        "review_verdict": "BLOCKED",
+        "block_reasons": [
+          "Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'defines/step_01.md', 'pipeline_state.json']"
+        ]
+      },
       "retry_count": 0,
       "define_review_retries": 0
     },
