@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { isValidLang, buildAlternates, type Lang } from '@/lib/i18n'
 import { getDictionary } from '@/lib/translations'
-import { getArticle } from '@/lib/learn'
+import { getArticle, getEmbedUrl } from '@/lib/learn'
 import { HeroSection } from '@/components/sections/hero-section'
 import { ContentSection } from '@/components/sections/content-section'
 import { FaqPreviewSection } from '@/components/sections/faq-preview-section'
@@ -42,6 +42,7 @@ export default async function ArticlePage({
   const dict = getDictionary(lang)
   const lp = dict.learnPage
   const content = article[lang as Lang]
+  const embedUrl = getEmbedUrl(article)
 
   return (
     <>
@@ -74,10 +75,10 @@ export default async function ArticlePage({
       ))}
 
       {/* 3. BUZZSPROUT AUDIO PLAYER */}
-      {article.buzzsproutEmbedUrl && (
+      {embedUrl && (
         <ContentSection background="light">
           <div className="mx-auto max-w-3xl">
-            <BuzzsproutPlayer src={article.buzzsproutEmbedUrl} lang={lang} />
+            <BuzzsproutPlayer src={embedUrl} lang={lang} />
           </div>
         </ContentSection>
       )}

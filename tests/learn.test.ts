@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { getArticles, getArticle, getArticleSlugs } from '../lib/learn'
+import { getArticles, getArticle, getArticleSlugs, getEmbedUrl } from '../lib/learn'
 
 const MOCK_URL = 'https://storage.googleapis.com/pivot-lending-content/articles/articles.json'
 
@@ -146,7 +146,7 @@ describe('getArticle', () => {
   })
 
   it('preserves buzzsproutEmbedUrl when present in article data', async () => {
-    const embedUrl = 'https://www.buzzsprout.com/123/player/456.js?container_id=buzzsprout-player-456&player=small'
+    const embedUrl = 'https://www.buzzsprout.com/123/456?client_source=small_player&iframe=true'
     const articlesWithEmbed = [{ ...MOCK_ARTICLES[0], buzzsproutEmbedUrl: embedUrl }]
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
       ok: true,
@@ -154,6 +154,62 @@ describe('getArticle', () => {
     }))
     const result = await getArticle('test-article')
     expect(result?.buzzsproutEmbedUrl).toBe(embedUrl)
+  })
+
+  it('returns undefined for buzzsproutEmbedUrl when field is absent', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => MOCK_ARTICLES,
+    }))
+    const result = await getArticle('test-article')
+    expect(result?.buzzsproutEmbedUrl).toBeUndefined()
+  })
+
+  it('returns empty string for buzzsproutEmbedUrl when field is empty string', async () => {
+    const articlesWithEmpty = [{ ...MOCK_ARTICLES[0], buzzsproutEmbedUrl: '' }]
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => articlesWithEmpty,
+    }))
+    const result = await getArticle('test-article')
+    expect(result?.buzzsproutEmbedUrl).toBe('')
+  })
+
+  it('returns whitespace-padded buzzsproutEmbedUrl as-is from feed data', async () => {
+    const padded = '  https://www.buzzsprout.com/123/456?client_source=small_player&iframe=true  '
+    const articlesWithPadded = [{ ...MOCK_ARTICLES[0], buzzsproutEmbedUrl: padded }]
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => articlesWithPadded,
+    }))
+    const result = await getArticle('test-article')
+    expect(result?.buzzsproutEmbedUrl).toBe(padded)
+  })
+})
+
+describe('getEmbedUrl', () => {
+  const base = MOCK_ARTICLES[0]
+
+  it('returns trimmed URL for a clean embed URL', () => {
+    const url = 'https://www.buzzsprout.com/123/456?client_source=small_player&iframe=true'
+    expect(getEmbedUrl({ ...base, buzzsproutEmbedUrl: url })).toBe(url)
+  })
+
+  it('trims whitespace so padded URLs cannot reach iframe src as-is', () => {
+    const padded = '  https://www.buzzsprout.com/123/456  '
+    expect(getEmbedUrl({ ...base, buzzsproutEmbedUrl: padded })).toBe(padded.trim())
+  })
+
+  it('returns null for whitespace-only buzzsproutEmbedUrl', () => {
+    expect(getEmbedUrl({ ...base, buzzsproutEmbedUrl: '   ' })).toBeNull()
+  })
+
+  it('returns null when buzzsproutEmbedUrl is empty string', () => {
+    expect(getEmbedUrl({ ...base, buzzsproutEmbedUrl: '' })).toBeNull()
+  })
+
+  it('returns null when buzzsproutEmbedUrl is absent', () => {
+    expect(getEmbedUrl(base)).toBeNull()
   })
 })
 

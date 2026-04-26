@@ -20,9 +20,9 @@ export interface ArticleContent {
 
 export interface Article {
   slug: string
+  buzzsproutEmbedUrl?: string
   en: ArticleContent
   es: ArticleContent
-  buzzsproutEmbedUrl?: string
 }
 
 export async function getArticles(): Promise<Article[]> {
@@ -45,4 +45,8 @@ export async function getArticle(slug: string): Promise<Article | undefined> {
 export async function getArticleSlugs(): Promise<string[]> {
   const articles = await getArticles()
   return articles.map((a) => a.slug)
+}
+
+export function getEmbedUrl(article: Article): string | null {
+  return article.buzzsproutEmbedUrl?.trim() || null
 }
