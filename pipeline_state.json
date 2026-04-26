@@ -1,117 +1,60 @@
 {
   "orchestrator_version": "2.0.0",
   "plan_version": "1.0",
-  "project_name": "CoFirstTimeBuyerGrants \u2014 Hreflang Alternates",
-  "status": "COMPLETE",
-  "current_step_index": 1,
+  "project_name": "CoFirstTimeBuyerGrants",
+  "status": "IN_PROGRESS",
+  "current_step_index": 0,
   "steps": [
     {
       "step_number": 1,
-      "title": "Add buildAlternates helper and wire hreflang into all generateMetadata exports",
-      "outline": "Add a `buildAlternates(lang, path)` function to `lib/i18n.ts` that returns a Next.js `alternates` metadata object with canonical, and language alternates for `en`, `es`, and `x-default`. Then add the `alternates` property to the `generateMetadata` export in each of the five pages that currently have one: the homepage, the FAQ page, the Learn index, the article detail page, and the county detail page.\n\nRough acceptance criteria:\n- `buildAlternates` is exported from `lib/i18n.ts` and returns `{ canonical, languages: { en, es, 'x-default' } }`\n- All URLs constructed by `buildAlternates` use the absolute base `https://cofirsttimebuyergrants.com`\n- `x-default` always points to the English URL\n- `app/[lang]/page.tsx` generateMetadata includes `alternates` using path `''`\n- `app/[lang]/faq/page.tsx` generateMetadata includes `alternates` using path `/faq`\n- `app/[lang]/learn/page.tsx` generateMetadata includes `alternates` using path `/learn`\n- `app/[lang]/learn/[slug]/page.tsx` generateMetadata includes `alternates` using the resolved slug value\n- `app/[lang]/counties/[county]/page.tsx` generateMetadata includes `alternates` using the resolved county slug value\n- No existing title, description, or JSON-LD values are changed\n- No files outside the claimed list are modified\n\nEstimated files: lib/i18n.ts, app/[lang]/page.tsx, app/[lang]/faq/page.tsx, app/[lang]/learn/page.tsx, app/[lang]/learn/[slug]/page.tsx, app/[lang]/counties/[county]/page.tsx",
+      "title": "Add Buzzsprout embedded audio player to Learn article pages",
+      "outline": "Add an optional `buzzsproutEmbedUrl` field to the Article interface and render an embedded Buzzsprout audio player on Learn article pages when the field is present.\n\nThe change must:\n- Add `buzzsproutEmbedUrl?: string` to the `Article` interface in `lib/learn.ts`\n- Create a new server component `components/sections/buzzsprout-player.tsx` that renders a Buzzsprout iframe. The iframe uses the `buzzsproutEmbedUrl` as `src`, width 100%, height 200px, no border, no scrolling\n- The component accepts `url: string` and `lang: string` props\n- The component renders a heading: \"Listen to the Episode\" when `lang === 'en'`, \"Escucha el Episodio\" when `lang === 'es'`\n- The component is wrapped in a `ContentSection` with `background=\"light\"`\n- In `app/[lang]/learn/[slug]/page.tsx`, render `BuzzsproutPlayer` between the hero section and the first content section only when `article.buzzsproutEmbedUrl` is present and non-empty\n- Articles without `buzzsproutEmbedUrl` render identically to before \u2014 no layout change\n- Do NOT modify any translation dictionary files\n- Update `tests/learn.test.ts` to add a test verifying that `buzzsproutEmbedUrl` is present and passed through when included in mock article data\n\nRough acceptance criteria:\n- `Article` interface in `lib/learn.ts` has `buzzsproutEmbedUrl?: string`\n- `BuzzsproutPlayer` component exists at `components/sections/buzzsprout-player.tsx`\n- Article page renders the player between hero and first content section when `buzzsproutEmbedUrl` is set\n- Article page renders no player when `buzzsproutEmbedUrl` is absent\n- Player shows correct heading for `en` and `es` lang\n- iframe `src` equals the `buzzsproutEmbedUrl` value verbatim\n- `pnpm run test` passes including the new test in `tests/learn.test.ts`\n- No translation dictionary files are modified\n\nEstimated files: lib/learn.ts, app/[lang]/learn/[slug]/page.tsx, components/sections/buzzsprout-player.tsx (new), tests/learn.test.ts",
       "rough_acceptance_criteria": [
-        "`buildAlternates` is exported from `lib/i18n.ts` and returns `{ canonical, languages: { en, es, 'x-default' } }`"
+        "`Article` interface in `lib/learn.ts` has `buzzsproutEmbedUrl?: string`"
       ],
       "estimated_files": [
-        "lib/i18n.ts",
-        "app/[lang]/page.tsx",
-        "app/[lang]/faq/page.tsx",
-        "app/[lang]/learn/page.tsx",
+        "lib/learn.ts",
         "app/[lang]/learn/[slug]/page.tsx",
-        "app/[lang]/counties/[county]/page.tsx"
+        "components/sections/buzzsprout-player.tsx (new)",
+        "tests/learn.test.ts"
       ],
       "required_tools": [],
-      "status": "CE_BLOCKED",
+      "status": "VERIFIED",
       "source": "planned",
-      "define_path": "C:\\BillStuff2\\AIJoe\\Pivot\\defines\\step_01_fix1.md",
-      "baseline_commit": "a9be1cc027f3c202193ce278858d96e7f196fb50",
-      "head_commit": "60bb99a3389922e87dfbf96c13486e94a9a9be7c",
-      "impl_log": "Done. Here's what was implemented:\n\n**`lib/i18n.ts`** \u00e2\u20ac\u201d added `buildAlternates(lang, path)` which returns `{ canonical, languages: { en, es, 'x-default' } }` all using the absolute base `https://cofirsttimebuyergrants.com`.\n\n**5 pages updated with `alternates`:**\n- `app/[lang]/page.tsx` \u00e2\u20ac\u201d new `generateMetadata` added (it had none), calls `buildAlternates(lang, '')`\n- `app/[lang]/faq/page.tsx` \u00e2\u20ac\u201d both ES/EN return branches get `alternates: buildAlternates(lang, '/faq')`\n- `app/[lang]/learn/page.tsx` \u00e2\u20ac\u201d same pattern with `/learn`\n- `app/[lang]/learn/[slug]/page.tsx` \u00e2\u20ac\u201d uses resolved `slug` param: `/learn/${slug}`\n- `app/[lang]/counties/[county]/page.tsx` \u00e2\u20ac\u201d uses resolved `countySlug` param: `/counties/${countySlug}`\n\nAll 12 existing tests pass, TypeScript is clean, committed as `18fb367`.",
+      "define_path": "C:\\BillStuff2\\AIJoe\\Pivot\\defines\\step_01.md",
+      "baseline_commit": "8da3acf32616bcacb19506abb70dd39275650326",
+      "head_commit": null,
+      "impl_log": "Done. Here's a summary of what was implemented:\n\n- **`lib/learn.ts`** \u00e2\u20ac\u201d Added `buzzsproutEmbedUrl?: string` to the `Article` interface.\n- **`components/sections/buzzsprout-player.tsx`** \u00e2\u20ac\u201d New component that renders the section heading (\"Listen to the Episode\" / \"Escucha el Episodio\" based on `lang`) and an `<iframe>` with `width=\"100%\"`, `height={200}`, `frameBorder={0}`, `scrolling=\"no\"`.\n- **`app/[lang]/learn/[slug]/page.tsx`** \u00e2\u20ac\u201d Conditionally renders `<BuzzsproutPlayer>` when `article.buzzsproutEmbedUrl` is non-empty.\n- **`tests/learn.test.ts`** \u00e2\u20ac\u201d Added a test asserting `buzzsproutEmbedUrl` round-trips through `getArticle` when present in mock data.\n\nAll 20 tests pass (2 test files).",
       "verification_result": {
-        "type": "none",
+        "type": "unit_tests",
         "passed": true,
-        "output": "No verification configured \u2014 PASS",
+        "output": "\n> cofirsttimebuyergrants@0.1.0 test C:\\BillStuff2\\AIJoe\\Pivot\n> vitest run\n\n\n RUN  v4.1.4 C:/BillStuff2/AIJoe/Pivot\n\n\n Test Files  2 passed (2)\n      Tests  20 passed (20)\n   Start at  22:13:29\n   Duration  205ms (transform 72ms, setup 0ms, import 100ms, tests 15ms, environment 0ms)\n\n",
         "error": null
       },
-      "ce_review": {
-        "repo_root": "C:\\BillStuff2\\AIJoe\\Pivot",
-        "baseline_reference": "a9be1cc027f3c202193ce278858d96e7f196fb50",
-        "head_reference": "60bb99a3389922e87dfbf96c13486e94a9a9be7c",
-        "change_request": "Step 1: Add buildAlternates helper and wire hreflang into all generateMetadata exports",
-        "acceptance_criteria": [
-          "`buildAlternates` is exported from `lib/i18n.ts` and returns `{ canonical",
-          "languages: { en",
-          "es",
-          "'x-default' } }`"
-        ],
-        "constraints": [],
-        "non_goals": [],
-        "invariants": [],
-        "implementation_notes": "",
-        "changed_files_claimed": [
-          "lib/i18n.ts",
-          "app/[lang]/page.tsx",
-          "app/[lang]/faq/page.tsx",
-          "app/[lang]/learn/page.tsx",
-          "app/[lang]/learn/[slug]/page.tsx",
-          "app/[lang]/counties/[county]/page.tsx"
-        ],
-        "changed_files_detected": [
-          "PIPELINE_BLOCKED.md",
-          "app/[lang]/counties/[county]/page.tsx",
-          "app/[lang]/faq/page.tsx",
-          "app/[lang]/learn/[slug]/page.tsx",
-          "app/[lang]/learn/page.tsx",
-          "app/[lang]/page.tsx",
-          "articles.json",
-          "ce-reviews/2026-03-08_commit_ff9a01f.json",
-          "ce-reviews/2026-04-18_commit_ae189b0.json",
-          "ce-reviews/2026-04-18_commit_bc803d2.json",
-          "defines/step_01.md",
-          "images/Marc2_cx840.png",
-          "images/Marc2_cx896.png",
-          "images/Marc2_cx950.png",
-          "images/MarcClaymation.png",
-          "images/MarcClaymation2.png",
-          "images/MarcClaymation_cx1300.png",
-          "images/MarcClaymation_cx1400.png",
-          "images/MarcClaymation_cx1500.png",
-          "images/MarcClaymation_portrait.png",
-          "images/backgroundMusic/Breeze de Palma.mp3",
-          "images/marcSquare.png",
-          "images/marc_test_audio.mp3",
-          "images/marc_test_short.mp4",
-          "images/marc_test_v2.mp4",
-          "images/marc_test_v3.mp4",
-          "images/marc_test_v4.mp4",
-          "images/me 21-2.JPG",
-          "images/me new.jpg",
-          "images/watermark.png",
-          "lib/i18n.ts",
-          "next-env.d.ts",
-          "pipeline_state.json",
-          "site-canon.md",
-          "tsconfig.tsbuildinfo"
-        ],
-        "diff_summary": {
-          "files_changed": 35,
-          "lines_added": 1782,
-          "lines_removed": 6
-        },
-        "mechanical_checks": {
-          "pass": false,
-          "violations": [
-            "Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'articles.json', 'ce-reviews/2026-03-08_commit_ff9a01f.json', 'ce-reviews/2026-04-18_commit_ae189b0.json', 'ce-reviews/2026-04-18_commit_bc803d2.json', 'defines/step_01.md', 'images/Marc2_cx840.png', 'images/Marc2_cx896.png', 'images/Marc2_cx950.png', 'images/MarcClaymation.png', 'images/MarcClaymation2.png', 'images/MarcClaymation_cx1300.png', 'images/MarcClaymation_cx1400.png', 'images/MarcClaymation_cx1500.png', 'images/MarcClaymation_portrait.png', 'images/backgroundMusic/Breeze de Palma.mp3', 'images/marcSquare.png', 'images/marc_test_audio.mp3', 'images/marc_test_short.mp4', 'images/marc_test_v2.mp4', 'images/marc_test_v3.mp4', 'images/marc_test_v4.mp4', 'images/me 21-2.JPG', 'images/me new.jpg', 'images/watermark.png', 'next-env.d.ts', 'pipeline_state.json', 'site-canon.md', 'tsconfig.tsbuildinfo']"
-          ]
-        },
-        "chief_engineer_review": {},
-        "human_confirmations": {},
-        "review_verdict": "BLOCKED",
-        "block_reasons": [
-          "Files detected but not claimed: ['PIPELINE_BLOCKED.md', 'articles.json', 'ce-reviews/2026-03-08_commit_ff9a01f.json', 'ce-reviews/2026-04-18_commit_ae189b0.json', 'ce-reviews/2026-04-18_commit_bc803d2.json', 'defines/step_01.md', 'images/Marc2_cx840.png', 'images/Marc2_cx896.png', 'images/Marc2_cx950.png', 'images/MarcClaymation.png', 'images/MarcClaymation2.png', 'images/MarcClaymation_cx1300.png', 'images/MarcClaymation_cx1400.png', 'images/MarcClaymation_cx1500.png', 'images/MarcClaymation_portrait.png', 'images/backgroundMusic/Breeze de Palma.mp3', 'images/marcSquare.png', 'images/marc_test_audio.mp3', 'images/marc_test_short.mp4', 'images/marc_test_v2.mp4', 'images/marc_test_v3.mp4', 'images/marc_test_v4.mp4', 'images/me 21-2.JPG', 'images/me new.jpg', 'images/watermark.png', 'next-env.d.ts', 'pipeline_state.json', 'site-canon.md', 'tsconfig.tsbuildinfo']"
-        ]
-      },
-      "retry_count": 1,
+      "ce_review": null,
+      "retry_count": 0,
+      "define_review_retries": 0
+    },
+    {
+      "step_number": 2,
+      "title": "Python script to link a published Buzzsprout episode to an article in GCS",
+      "outline": "Create a Python script at `scripts/link_buzzsprout_episode.py` that accepts an article slug and a Buzzsprout episode ID, constructs the embed URL, and writes the updated `articles.json` back to the GCS bucket.\n\nThe script must:\n- Accept `--slug` (article slug string) and `--episode-id` (integer) as required CLI arguments\n- Load the following from environment variables (reading `.env` in project root if present via `python-dotenv`): `BUZZSPROUT_PODCAST_ID`, `GCS_BUCKET`, `GCS_ARTICLES_PATH`, `GOOGLE_APPLICATION_CREDENTIALS`\n- Download `articles.json` from `gs://{GCS_BUCKET}/{GCS_ARTICLES_PATH}` using the `google-cloud-storage` Python library (not gsutil CLI)\n- Construct `buzzsproutEmbedUrl` as: `https://www.buzzsprout.com/{BUZZSPROUT_PODCAST_ID}/{episode_id}?client_source=small_player&iframe=true`\n- Find the article matching `--slug` and set its `buzzsproutEmbedUrl` field\n- If no article matches the slug: exit with code 1 and print a clear error message\n- If the article already has `buzzsproutEmbedUrl`: overwrite it and print a warning\n- All other articles and all other fields must be preserved exactly\n- Upload the updated JSON back to the same GCS path with `content_type='application/json'`\n- Pretty-print JSON with `indent=2, ensure_ascii=False`\n- Print a success message including the slug and the constructed embed URL\n\nRough acceptance criteria:\n- Script file exists at `scripts/link_buzzsprout_episode.py`\n- Script accepts `--slug` and `--episode-id` CLI args\n- Script exits with code 1 and error message if slug not found\n- Script prints warning if buzzsproutEmbedUrl already exists on target article\n- Script constructs embed URL in exact format: `https://www.buzzsprout.com/{BUZZSPROUT_PODCAST_ID}/{episode_id}?client_source=small_player&iframe=true`\n- Script uses `google-cloud-storage` library for GCS read/write\n- Script uses `python-dotenv` to load `.env` if present\n- Only the target article is modified; all other articles and fields are unchanged\n- Script prints success message with slug and embed URL on completion\n\nEstimated files: scripts/link_buzzsprout_episode.py (new)",
+      "rough_acceptance_criteria": [
+        "Script file exists at `scripts/link_buzzsprout_episode.py`"
+      ],
+      "estimated_files": [
+        "scripts/link_buzzsprout_episode.py (new)"
+      ],
+      "required_tools": [],
+      "status": "PENDING",
+      "source": "planned",
+      "define_path": null,
+      "baseline_commit": null,
+      "head_commit": null,
+      "impl_log": null,
+      "verification_result": null,
+      "ce_review": null,
+      "retry_count": 0,
       "define_review_retries": 0
     }
   ],
@@ -124,13 +67,13 @@
       "estimated": false
     },
     "gpt-5.4": {
-      "input_tokens": 3683,
-      "output_tokens": 1280,
+      "input_tokens": 9551,
+      "output_tokens": 2485,
       "estimated": false
     },
     "claude-sonnet-4-6": {
-      "input_tokens": 123,
-      "output_tokens": 383,
+      "input_tokens": 61,
+      "output_tokens": 175,
       "estimated": true
     },
     "gpt-5.4-mini": {
@@ -139,32 +82,6 @@
       "estimated": false
     }
   },
-  "created_at": "2026-04-23T14:53:13.816975",
-  "updated_at": "2026-04-23T14:53:13.817974",
-  "final_code_review": {
-    "verdict": "CONCERNS",
-    "overall_assessment": "No source files, configuration, or tests were provided, so a line-by-line holistic review cannot be completed. Because the review standard requires full code accountability and verification of tests, the project cannot be approved in its current review state.",
-    "engineering_rule_violations": [
-      "Rule 11 (Full Code Accountability): impossible to verify because no files were available for line-by-line review.",
-      "Rule 12 (Tests Define Correctness): impossible to verify because no test files or test results were provided.",
-      "Rule 10 (Zero Warnings Policy): impossible to verify because no CI, lint, type-check, or build outputs were provided.",
-      "Rules 1-9: compliance cannot be assessed because no implementation files were available."
-    ],
-    "consistency_issues": [
-      "Cross-file naming, interface consistency, and pattern consistency cannot be assessed without the produced files."
-    ],
-    "correctness_concerns": [
-      "The hreflang alternates implementation cannot be validated for correctness, SEO behavior, canonical alignment, locale mapping, or duplicate/missing alternate tags because no code or rendered output was provided.",
-      "Potential production risks remain unknown, including malformed hreflang values, missing x-default handling, inconsistent URL generation, and environment-specific routing issues."
-    ],
-    "test_coverage_assessment": "inadequate",
-    "recommendations": [
-      "Provide the full set of produced source files, configuration, and templates/components involved in hreflang generation.",
-      "Provide automated tests covering happy path, locale edge cases, invalid locale handling, missing translations, canonical/hreflang consistency, and rendered HTML assertions.",
-      "Provide CI outputs for build, lint, type-check, and test execution to verify the zero-warnings policy.",
-      "Include representative rendered pages or snapshots for each locale, including x-default behavior if applicable.",
-      "Resubmit for review only after artifacts are available so the implementation can be verified against all engineering rules."
-    ]
-  },
-  "completed_at": "2026-04-23T14:58:51.346251"
+  "created_at": "2026-04-26T02:06:31.632222",
+  "updated_at": "2026-04-26T02:06:31.634221"
 }
