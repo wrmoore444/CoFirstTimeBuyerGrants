@@ -144,6 +144,17 @@ describe('getArticle', () => {
     const result = await getArticle('test-article')
     expect(result).toBeUndefined()
   })
+
+  it('preserves buzzsproutEmbedUrl when present in article data', async () => {
+    const embedUrl = 'https://www.buzzsprout.com/123/player/456.js?container_id=buzzsprout-player-456&player=small'
+    const articlesWithEmbed = [{ ...MOCK_ARTICLES[0], buzzsproutEmbedUrl: embedUrl }]
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => articlesWithEmbed,
+    }))
+    const result = await getArticle('test-article')
+    expect(result?.buzzsproutEmbedUrl).toBe(embedUrl)
+  })
 })
 
 describe('getArticleSlugs', () => {

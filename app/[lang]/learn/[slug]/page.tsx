@@ -8,6 +8,7 @@ import { HeroSection } from '@/components/sections/hero-section'
 import { ContentSection } from '@/components/sections/content-section'
 import { FaqPreviewSection } from '@/components/sections/faq-preview-section'
 import { CtaBannerSection } from '@/components/sections/cta-banner-section'
+import { BuzzsproutPlayer } from '@/components/sections/buzzsprout-player'
 import { ContactForm } from '@/components/layout/contact-form'
 import { Button } from '@/components/ui/button'
 
@@ -72,7 +73,16 @@ export default async function ArticlePage({
         </ContentSection>
       ))}
 
-      {/* 3. LOCAL RELEVANCE */}
+      {/* 3. BUZZSPROUT AUDIO PLAYER */}
+      {article.buzzsproutEmbedUrl && (
+        <ContentSection background="light">
+          <div className="mx-auto max-w-3xl">
+            <BuzzsproutPlayer src={article.buzzsproutEmbedUrl} lang={lang} />
+          </div>
+        </ContentSection>
+      )}
+
+      {/* 4. LOCAL RELEVANCE */}
       <ContentSection background={content.sections.length % 2 === 0 ? 'white' : 'light'}>
         <div className="mx-auto max-w-3xl">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -88,7 +98,7 @@ export default async function ArticlePage({
         </div>
       </ContentSection>
 
-      {/* 4. CTA + LEAD FORM */}
+      {/* 5. CTA + LEAD FORM */}
       <ContentSection background="white" id="eligibility">
         <div className="mx-auto max-w-2xl text-center mb-10">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -107,7 +117,7 @@ export default async function ArticlePage({
         </div>
       </ContentSection>
 
-      {/* 5. FAQ */}
+      {/* 6. FAQ */}
       <ContentSection background="light">
         <div className="text-center mb-10">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -119,7 +129,7 @@ export default async function ArticlePage({
         </div>
       </ContentSection>
 
-      {/* 6. FINAL CTA BANNER */}
+      {/* 7. FINAL CTA BANNER */}
       <CtaBannerSection
         title={lp.ctaBannerTitle}
         subtitle={lp.ctaBannerSubtitle}

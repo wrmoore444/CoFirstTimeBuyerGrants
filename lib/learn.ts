@@ -22,6 +22,7 @@ export interface Article {
   slug: string
   en: ArticleContent
   es: ArticleContent
+  buzzsproutEmbedUrl?: string
 }
 
 export async function getArticles(): Promise<Article[]> {
