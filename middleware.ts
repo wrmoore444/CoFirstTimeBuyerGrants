@@ -20,7 +20,14 @@ export function middleware(request: NextRequest) {
 
   const url = request.nextUrl.clone()
   url.pathname = `/en${pathname === '/' ? '' : pathname}`
-  return NextResponse.redirect(url)
+
+  // Rewrite root so cofirsttimebuyergrants.com/ is indexable (not a redirect)
+  if (pathname === '/') {
+    return NextResponse.rewrite(url)
+  }
+
+  // Permanent redirect for all other non-prefixed paths
+  return NextResponse.redirect(url, { status: 308 })
 }
 
 export const config = {

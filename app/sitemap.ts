@@ -20,6 +20,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/terms-conditions', priority: 0.3 },
   ]
 
+  // Root URL is served via rewrite (no redirect) — include as canonical EN homepage
+  const rootEntry: MetadataRoute.Sitemap = [
+    {
+      url: BASE_URL,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 1.0,
+    },
+  ]
+
   const staticEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
     staticRoutes.map(({ path, priority }) => ({
       url: `${BASE_URL}/${lang}${path}`,
@@ -47,5 +57,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   )
 
-  return [...staticEntries, ...countyEntries, ...articleEntries]
+  return [...rootEntry, ...staticEntries, ...countyEntries, ...articleEntries]
 }
