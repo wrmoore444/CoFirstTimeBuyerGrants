@@ -62,7 +62,16 @@ export default async function ArticlePage({
         </p>
       </HeroSection>
 
-      {/* 2. ARTICLE CONTENT SECTIONS */}
+      {/* 2. BUZZSPROUT AUDIO PLAYER */}
+      {embedUrl && (
+        <ContentSection background="light">
+          <div className="mx-auto max-w-3xl">
+            <BuzzsproutPlayer src={embedUrl} lang={lang} />
+          </div>
+        </ContentSection>
+      )}
+
+      {/* 3. ARTICLE CONTENT SECTIONS */}
       {content.sections.map((section, i) => (
         <ContentSection key={section.heading} background={i % 2 === 0 ? 'white' : 'light'}>
           <div className="mx-auto max-w-3xl">
@@ -73,15 +82,6 @@ export default async function ArticlePage({
           </div>
         </ContentSection>
       ))}
-
-      {/* 3. BUZZSPROUT AUDIO PLAYER */}
-      {embedUrl && (
-        <ContentSection background="light">
-          <div className="mx-auto max-w-3xl">
-            <BuzzsproutPlayer src={embedUrl} lang={lang} />
-          </div>
-        </ContentSection>
-      )}
 
       {/* 4. LOCAL RELEVANCE */}
       <ContentSection background={content.sections.length % 2 === 0 ? 'white' : 'light'}>
